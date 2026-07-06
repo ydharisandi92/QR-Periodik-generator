@@ -190,12 +190,12 @@ font-size:20px;
 font-weight:bold;
 text-align:center;
 width:100%;
-display:block; /* Mengubah menjadi block penuh agar benar-benar terpisah baris */
+display:block;
 clear:both;
 }
 
 .subtitle-pic {
-margin-top:8px; /* Memberikan jeda spasial agar tidak menempel satu sama lain */
+margin-top:8px;
 font-size:18px;
 font-weight:bold;
 text-align:center;
@@ -289,7 +289,7 @@ background:#0d47a1;
 background:#ff8c00;
 }
 
-/* ================= ROMBAK RADIKAL TOTAL TABEL RESUME ================= */
+/* ================= TABEL RESUME MATRIX ================= */
 .matrix-table{
 width:100% !important;
 border-collapse:collapse !important;
@@ -582,15 +582,37 @@ document.getElementById("loading").innerText = "Gagal mengambil data Google Shee
 
 async function copyImage(){
 const area = document.getElementById("reportArea");
-const canvas = await html2canvas(area,{scale:2});
+
+// 1. Simpan style layout asli bawaan layar aktif
+const originalWidth = area.style.width;
+const originalMinWidth = area.style.minWidth;
+
+// 2. Paksa elemen melebar ke resolusi standar ideal (1400px) sebelum difoto
+area.style.width = "1400px";
+area.style.minWidth = "1400px";
+
+// Beri waktu microsecond bagi browser untuk render ulang lebar baru
+await new Promise(resolve => setTimeout(resolve, 50));
+
+// 3. Eksekusi html2canvas dengan scale 2 (Lebar gambar akhir = 1400 x 2 = 2800px)
+const canvas = await html2canvas(area,{
+scale:2,
+useCORS:true,
+logging:false
+});
+
+// 4. Kembalikan layout web ke kondisi aslinya agar tetap rapi di layar monitor Anda
+area.style.width = originalWidth;
+area.style.minWidth = originalMinWidth;
+
 canvas.toBlob(async(blob)=>{
 try{
 await navigator.clipboard.write([new ClipboardItem({"image/png":blob})]);
-alert("Image berhasil dicopy");
+alert("✅ Image berhasil dicopy dengan resolusi tinggi (2800px)!");
 }catch{
-alert("Browser tidak mendukung copy image");
+alert("❌ Browser tidak mendukung copy image langsung");
 }
-});
+},"image/png");
 }
 
 generateReport();
