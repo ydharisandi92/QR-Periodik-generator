@@ -205,17 +205,20 @@ border-radius:18px;
 table.main-data-table th{
 background:#1565c0;
 color:#fff;
-padding:15px;
-font-size:14px;
+padding:10px 8px;
+font-size:11px;
 text-align:center;
 vertical-align:middle;
+text-transform: uppercase;
+font-weight:800;
+border:1px solid #cfcfcf;
 }
 
 table.main-data-table td{
-padding:11px;
-border:1px solid #ececec;
-font-size:18px;
-color:#374151;
+padding:10px 8px;
+border:1px solid #cfcfcf;
+font-size:11px; /* Diubah dari 18px ke 11px agar sama ukurannya dengan resume */
+color:#111827;
 font-weight:600;
 text-align:center;
 }
@@ -269,9 +272,8 @@ border-collapse:collapse !important;
 table-layout:fixed !important;
 }
 
-/* Header Kolom Wajib Menjadi 1 Baris Sejajar Penuh Tanpa Terpotong/Wrap */
 .matrix-table th{
-font-size:11px !important;               /* Diatur pas agar teks horizontal muat sempurna */
+font-size:11px !important;               
 font-weight:800 !important;
 padding:8px 4px !important;
 line-height:1 !important;
@@ -280,7 +282,7 @@ background:#ffffff !important;
 color:#1e3a8a !important;
 vertical-align:middle !important;
 text-align:center !important;
-white-space:nowrap !important;           /* KUNCI MUTLAK: Teks dipaksa lurus dalam 1 baris */
+white-space:nowrap !important;           
 text-transform: uppercase
 }
 
@@ -288,26 +290,24 @@ text-transform: uppercase
 color:#ef6c00 !important;
 }
 
-/* Nilai Data Angka dibuat Lebih Kecil dan Proporsional */
 .matrix-table td{
-font-size:11px !important;               /* Diperkecil agar mengimbangi ukuran visual tabel */
+font-size:11px !important;               
 font-weight:900 !important;
 padding:10px 8px !important;
 line-height:1.2 !important;
 border:1px solid #cfcfcf !important;
-text-align:left !important;
+text-align:center !important; /* MENGUBAH DATA MENJADI RATA TENGAH (CENTER) */
 background:#fff !important;
 color:#111827 !important;
 }
 
-/* Label Kolom Samping Kiri (TOTAL, OK, REFUND, NOT OK) Diperkecil Total */
 .label-cell{
-font-size:10px !important;               /* DIROMBAK TOTAL: Benar-benar kecil dan rapi */
+font-size:10px !important;               
 font-weight:800 !important;
 letter-spacing:.2px !important;
 background:#f3f4f6 !important;
 color:#111827 !important;
-text-align:left !important;
+text-align:left !important; /* TETAP DI KIRI UNTUK LABEL STATUS */
 padding-left:10px !important;
 vertical-align:middle !important;
 white-space:nowrap !important;
