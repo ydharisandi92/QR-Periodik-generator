@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PENGECEKAN QRIS H+0</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+<style>
+*{box-sizing:border-box;font-family:Arial,sans-serif}
+
+body{
+margin:0;
+padding:30px;
+background:#edf4ff;
+color:#1f2937;
+}
+
+.wrapper{
+max-width:1400px;
+margin:auto;
+}
+
+.toolbar{
+background:#fff;
+padding:20px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+margin-bottom:25px;
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+
+select,button{
+padding:14px 18px;
+border:none;
+border-radius:14px;
+font-size:20px;
+}
+
+select{
+background:#f4f8ff;
+border:1px solid #dbe7ff;
+}
+
+button{
+cursor:pointer;
+font-weight:bold;
+}
+
+.generate{
+background:#1565c0;
+color:#fff;
+}
+
+.copy{
+background:#ff8f00;
+color:#fff;
+}
+
+.report{
+background:#fff;
+border-radius:28px;
+overflow:hidden;
+box-shadow:0 12px 40px rgba(0,0,0,.08);
+}
+
+/* ================= HEADER STYLE LAYOUT ================= */
+.header{
+background:linear-gradient(135deg, #002f87 0%, #1565c0 45%, #ff8f00 100%) !important;
+padding:35px 40px !important;
+color:#fff !important;
+display:block !important;
+clear:both !important;
+}
+
+.header-table {
+width:100% !important;
+border-collapse:collapse !important;
+margin-bottom:10px !important;
+background:transparent !important;
+}
+
+.header-table td {
+border:none !important;
+padding:0 !important;
+background:transparent !important;
+vertical-align:middle !important;
+}
+
+.logo-left-cell {
+text-align:left !important;
+width:50% !important;
+}
+
+.qris-logo-container {
+display:inline-block !important;
+text-align:left !important;
+vertical-align:middle !important;
+}
+
+.qris-main-text {
+font-family:"Arial Black", Arial, Helvetica, sans-serif !important;
+font-size:56px !important; 
+font-weight:900 !important;
+letter-spacing:-3px !important; 
+color:#ffffff !important; 
+margin:0 !important;
+padding:0 !important;
+line-height:0.8 !important;
+display:inline-block !important;
+vertical-align:middle !important;
+}
+
+.qris-sub-text-side {
+display:inline-block !important;
+border-left:3px solid #ffffff !important; 
+padding-left:10px !important;
+margin-left:12px !important;
+text-align:left !important;
+vertical-align:middle !important;
+}
+
+.qris-sub-line1, .qris-sub-line2 {
+font-size:15px !important;
+font-weight:bold !important;
+font-style:italic !important;
+color:#ffffff !important;
+letter-spacing:0.5px !important;
+line-height:1.2 !important;
+margin:0 !important;
+}
+
+.logo-right-cell {
+text-align:right !important;
+width:50% !important;
+}
+
+.ranger {
+display:inline-block !important;
+text-align:right !important;
+font-size:34px !important;
+font-style:italic !important;
+font-weight:900 !important;
+line-height:1 !important;
+color:#ffffff !important;
+}
+
+.ranger small {
+display:block !important;
+margin-top:4px !important;
+font-size:11px !important;
+letter-spacing:0.5px !important;
+font-weight:700 !important;
+opacity:0.95 !important;
+font-style:normal !important;
+}
+
+.header h1.main-title {
+margin:25px 0 0 0 !important;
+font-size:42px !important;
+font-weight:800 !important;
+text-align:center !important;
+color:#ffffff !important;
+letter-spacing:.5px !important;
+display:block !important;
+clear:both !important;
+}
+
+.subtitle{
+margin-top:14px;
+font-size:18px;
+font-weight:bold;
+display:flex;
+justify-content:center;
+gap:10px;
+flex-wrap:wrap;
+}
+
+/* ================= CONTENT AREA ================= */
+.content{
+padding:30px;
+}
+
+.section-title{
+font-size:23px;
+font-weight:bold;
+margin-bottom:14px;
+color:#1565c0;
+text-shadow:0 1px 2px rgba(0,0,0,.08);
+letter-spacing:.3px;
+}
+
+table.main-data-table{
+width:100%;
+border-collapse:collapse;
+margin-bottom:30px;
+overflow:hidden;
+border-radius:18px;
+}
+
+table.main-data-table th{
+background:#1565c0;
+color:#fff;
+padding:15px;
+font-size:14px;
+text-align:center;
+vertical-align:middle;
+}
+
+table.main-data-table td{
+padding:14px;
+border:1px solid #ececec;
+font-size:18px;
+color:#374151;
+font-weight:600;
+text-align:center;
+}
+
+table.main-data-table tbody tr:nth-child(even){
+background:#f8fbff;
+}
+
+.loading{
+text-align:center;
+padding:15px;
+font-weight:bold;
+color:#1565c0;
+}
+
+.summary-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:24px;
+margin-bottom:20px;
+}
+
+.summary-box{
+background:#fff;
+border-radius:14px;
+overflow:hidden;
+border:1px solid #d8d8d8;
+}
+
+.summary-header{
+font-size:22px;
+padding:14px;
+font-weight:800;
+text-align:center;
+color:#fff;
+letter-spacing:.4px;
+}
+
+.blue-header{
+background:#0d47a1;
+}
+
+.orange-header{
+background:#ff8c00;
+}
+
+/* ================= ROMBAK RADIKAL TOTAL TABEL RESUME ================= */
+.matrix-table{
+width:100% !important;
+border-collapse:collapse !important;
+table-layout:fixed !important;
+}
+
+/* Header Kolom Wajib Menjadi 1 Baris Sejajar Penuh Tanpa Terpotong/Wrap */
+.matrix-table th{
+font-size:11px !important;               /* Diatur pas agar teks horizontal muat sempurna */
+font-weight:800 !important;
+padding:8px 4px !important;
+line-height:1 !important;
+border:1px solid #cfcfcf !important;
+background:#ffffff !important;
+color:#1e3a8a !important;
+vertical-align:middle !important;
+text-align:center !important;
+white-space:nowrap !important;           /* KUNCI MUTLAK: Teks dipaksa lurus dalam 1 baris */
+text-transform: uppercase
+}
+
+.nominal-matrix th{
+color:#ef6c00 !important;
+}
+
+/* Nilai Data Angka dibuat Lebih Kecil dan Proporsional */
+.matrix-table td{
+font-size:12px !important;               /* Diperkecil agar mengimbangi ukuran visual tabel */
+font-weight:900 !important;
+padding:10px 8px !important;
+line-height:1.2 !important;
+border:1px solid #cfcfcf !important;
+text-align:left !important;
+background:#fff !important;
+color:#111827 !important;
+}
+
+/* Label Kolom Samping Kiri (TOTAL, OK, REFUND, NOT OK) Diperkecil Total */
+.label-cell{
+font-size:10px !important;               /* DIROMBAK TOTAL: Benar-benar kecil dan rapi */
+font-weight:800 !important;
+letter-spacing:.2px !important;
+background:#f3f4f6 !important;
+color:#111827 !important;
+text-align:left !important;
+padding-left:10px !important;
+vertical-align:middle !important;
+white-space:nowrap !important;
+}
+
+@media(max-width:1000px){
+.summary-grid{
+grid-template-columns:1fr;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<div class="toolbar">
+<select id="periode">
+<option value="1">Batch 1 (23:30:00 - 09:59:59)</option>
+<option value="2">Batch 2 (10:00:00 - 13:59:59)</option>
+<option value="3" selected>Batch 3 (14:00:00 - 16:59:59)</option>
+</select>
+
+<button class="generate" onclick="generateReport()">Generate Report</button>
+<button class="copy" onclick="copyImage()">Copy Image</button>
+</div>
+
+<div class="report" id="reportArea">
+
+<div class="header">
+<table class="header-table">
+<tr>
+<td class="logo-left-cell">
+<div class="qris-logo-container">
+<h1 class="qris-main-text">QRIS</h1>
+<div class="qris-sub-text-side">
+<div class="qris-sub-line1">QR Code Standard</div>
+<div class="qris-sub-line2">Pembayaran Nasional</div>
+</div>
+</div>
+</td>
+<td class="logo-right-cell">
+<div class="ranger">
+RANGER+
+<small>SENSE EARLY — MOVE FASTER — WIN AHEAD</small>
+</div>
+</td>
+</tr>
+</table>
+
+<h1 class="main-title">PENGECEKAN QRIS H+0</h1>
+<div class="subtitle">
+<span id="tanggalText">Tanggal : -</span>
+|
+<span id="periodeText">BATCH 3 | 14:00:00 - 16:59:59</span>
+</div>
+</div>
+
+<div class="content">
+
+<div class="summary-grid">
+<div class="summary-box">
+<div class="summary-header blue-header">RESUME CROSSCHECK</div>
+<table class="matrix-table">
+<thead>
+<tr>
+<th style="width: 22%;">Status</th>
+<th style="width: 39%;">Data Recon VS Data Transaksi</th>
+<th style="width: 39%;">Data Transaksi VS Data Recon</th>
+</tr>
+</thead>
+<tbody id="resumeBody">
+<tr><td class="label-cell">📊 TOTAL</td><td>-</td><td>-</td></tr>
+<tr><td class="label-cell">✅ OK</td><td>-</td><td>-</td></tr>
+<tr><td class="label-cell">↩️ REFUND</td><td>-</td><td>-</td></tr>
+<tr><td class="label-cell">❌ NOT OK</td><td>-</td><td>-</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="summary-box">
+<div class="summary-header orange-header">RESUME NOMINAL CROSSCHECK</div>
+<table class="matrix-table nominal-matrix">
+<thead>
+<tr>
+<th style="width: 22%;">Status</th>
+<th style="width: 39%;">Data Recon VS Data Transaksi</th>
+<th style="width: 39%;">Data Transaksi VS Data Recon</th>
+</tr>
+</thead>
+<tbody id="nominalBody">
+<tr><td class="label-cell">📊 TOTAL</td><td>-</td><td>-</td></tr>
+<tr><td class="label-cell">✅ OK</td><td>-</td><td>-</td></tr>
+<tr><td class="label-cell">↩️ REFUND</td><td>-</td><td>-</td></tr>
+<tr><td class="label-cell">❌ NOT OK</td><td>-</td><td>-</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="section-title">HASIL CROSSCHECK DATA RECON DIBANDING DATA TRANSAKSI</div>
+
+<table class="main-data-table">
+<thead>
+<tr>
+<th>Nomor</th>
+<th>Waktu Transaksi</th>
+<th>ID Transaksi</th>
+<th>ID Trx Reff</th>
+<th>RC</th>
+<th>PC</th>
+<th>Nominal</th>
+<th>Tips</th>
+<th>Merchant Category</th>
+<th>Merchant Criteria</th>
+</tr>
+</thead>
+<tbody id="hasilBody"></tbody>
+</table>
+
+<div class="loading" id="loading"></div>
+
+</div>
+</div>
+</div>
+
+<script>
+const CSV_URL = "https://docs.google.com/spreadsheets/d/1ESHhGJY32qC7fSFLx8HoDwGdYu2XA94mCPFEkTQCp0w/export?format=csv&gid=0";
+
+function formatCurrency(value){
+let num = parseFloat(String(value || 0).replace(/[^0-9.-]/g,''));
+if(isNaN(num)) num = 0;
+return new Intl.NumberFormat('id-ID',{
+style:'currency',
+currency:'IDR',
+minimumFractionDigits:2
+}).format(num);
+}
+
+function periodeLabel(val){
+if(val === "1") return "23:30:00 - 09:59:59";
+if(val === "2") return "10:00:00 - 13:59:59";
+return "14:00:00 - 16:59:59";
+}
+
+async function generateReport(){
+try{
+document.getElementById("loading").innerText = "Mengambil data realtime dari Google Sheet...";
+const periode = document.getElementById("periode").value;
+document.getElementById("periodeText").innerText = "BATCH " + periode + " | " + periodeLabel(periode);
+document.getElementById("tanggalText").innerText = "Tanggal : " + new Date().toLocaleDateString("id-ID",{
+day:'2-digit',
+month:'long',
+year:'numeric'
+});
+
+const response = await fetch(CSV_URL);
+const csvText = await response.text();
+
+Papa.parse(csvText,{
+header:false,
+skipEmptyLines:false,
+complete:function(result){
+const rows = result.data;
+const resumeBody = document.getElementById("resumeBody");
+const nominalBody = document.getElementById("nominalBody");
+const hasilBody = document.getElementById("hasilBody");
+
+resumeBody.innerHTML = "";
+nominalBody.innerHTML = "";
+hasilBody.innerHTML = "";
+
+const fixedResumeLabels = ["📊 TOTAL","✅ OK","↩️ REFUND","❌ NOT OK"];
+for(let i=0;i<4;i++){
+const row = rows[i+2] || [];
+resumeBody.innerHTML += `
+<tr>
+<td class="label-cell">${fixedResumeLabels[i]}</td>
+<td>${row[2] ? row[2] : '-'}</td>
+<td>${row[3] ? row[3] : '-'}</td>
+</tr>
+`;
+}
+
+const fixedNominalLabels = ["📊 TOTAL","✅ OK","↩️ REFUND","❌ NOT OK"];
+for(let i=0;i<4;i++){
+const row = rows[i+7] || [];
+nominalBody.innerHTML += `
+<tr>
+<td class="label-cell">${fixedNominalLabels[i]}</td>
+<td>${row[2] ? formatCurrency(row[2]) : '-'}</td>
+<td>${row[3] ? formatCurrency(row[3]) : '-'}</td>
+</tr>
+`;
+}
+
+for(let i=12;i<rows.length;i++){
+const row = rows[i];
+if(!row || row.every(cell => !cell)) continue;
+hasilBody.innerHTML += `
+<tr>
+<td>${row[0] || ''}</td>
+<td>${row[1] || ''}</td>
+<td>${row[2] || ''}</td>
+<td>${row[3] || ''}</td>
+<td>${row[4] || ''}</td>
+<td>${row[5] || ''}</td>
+<td>${formatCurrency(row[6])}</td>
+<td>${row[7] || ''}</td>
+<td>${row[8] || ''}</td>
+<td>${row[9] || ''}</td>
+</tr>
+`;
+}
+
+document.getElementById("loading").innerText = "Data berhasil digenerate";
+setTimeout(()=>{
+alert("✅ Generate Report Berhasil");
+document.getElementById("loading").innerText = "";
+},400);
+}
+});
+}catch(error){
+console.error(error);
+document.getElementById("loading").innerText = "Gagal mengambil data Google Sheet";
+}
+}
+
+async function copyImage(){
+const area = document.getElementById("reportArea");
+const canvas = await html2canvas(area,{scale:2});
+canvas.toBlob(async(blob)=>{
+try{
+await navigator.clipboard.write([new ClipboardItem({"image/png":blob})]);
+alert("Image berhasil dicopy");
+}catch{
+alert("Browser tidak mendukung copy image");
+}
+});
+}
+
+generateReport();
+</script>
+
+</body>
+</html>
