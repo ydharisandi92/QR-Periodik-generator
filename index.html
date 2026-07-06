@@ -20,7 +20,7 @@ color:#1f2937;
 
 .wrapper{
 width: 100%;
-max-width: 1320px; /* Sangat pas untuk resolusi monitor 1366x768 */
+max-width: 1320px; /* Optimal untuk resolusi laptop 1366x768 */
 margin:auto;
 }
 
@@ -84,7 +84,7 @@ box-shadow:0 10px 35px rgba(0,0,0,.06);
 width: 100%;
 }
 
-/* ================= HEADER LAYOUT SENSE ================= */
+/* ================= HEADER STYLE LAYOUT ================= */
 .header{
 background:linear-gradient(135deg, #002f87 0%, #1565c0 45%, #ff8f00 100%) !important;
 padding:20px 25px !important;
@@ -211,7 +211,7 @@ clear:both;
 padding:20px;
 }
 
-/* Penyatuan Box Resume */
+/* Unified Resume Box Layout */
 .unified-summary-card {
 background: #fff;
 border-radius: 14px;
@@ -231,7 +231,7 @@ color:#fff;
 letter-spacing:.4px;
 }
 
-/* Susunan Tabel Matrix Resume Sesuai Gambar GSheet */
+/* Matrix Table Layout */
 .matrix-table{
 width:100% !important;
 border-collapse:collapse !important;
@@ -239,7 +239,7 @@ table-layout:fixed !important;
 }
 
 .matrix-table th{
-font-size:10px !important;               
+font-size:11px !important;               
 font-weight:800 !important;
 padding:8px 4px !important;
 line-height:1.2 !important;
@@ -271,16 +271,16 @@ background:#f8fafc !important;
 }
 
 .label-cell{
-font-size:10px !important;               
+font-size:11px !important;               
 font-weight:800 !important;
 background:#f3f4f6 !important;
 color:#111827 !important;
 text-align:left !important;
-padding-left:12px !important;
+padding-left:15px !important;
 white-space:nowrap !important;
 }
 
-/* GRID UTAMA UNTUK DUA TABEL DATA BAWAH */
+/* GRID LAYOUT UNTUK DUA TABEL BAWAH */
 .main-tables-grid {
 display: grid;
 grid-template-columns: 1fr 1fr;
@@ -322,7 +322,6 @@ font-weight:800;
 border:1px solid #cfcfcf;
 }
 
-/* Tema Warna Tabel Kanan (Kotak Merah) */
 table.main-data-table.right-theme th {
 background: #ff8f00;
 }
@@ -422,19 +421,15 @@ RANGER+
   <table class="matrix-table">
     <thead>
       <tr>
-        <th rowspan="2" style="width: 28%; vertical-align: middle;">Sistem Pembanding</th>
-        <th colspan="4" style="width: 36%;">Volume Transaksi (Qty)</th>
-        <th colspan="4" style="width: 36%;" class="nominal-th">Nominal Transaksi (IDR)</th>
+        <th rowspan="2" style="width: 14%; vertical-align: middle;">Status</th>
+        <th colspan="2" style="width: 43%;">Volume Transaksi (Qty)</th>
+        <th colspan="2" style="width: 43%;" class="nominal-th">Nominal Transaksi (IDR)</th>
       </tr>
       <tr>
-        <th>Total</th>
-        <th>OK</th>
-        <th>Refund</th>
-        <th>Not OK</th>
-        <th class="nominal-th">Total</th>
-        <th class="nominal-th">OK</th>
-        <th class="nominal-th">Refund</th>
-        <th class="nominal-th">Not OK</th>
+        <th>Data Recon VS Data Transaksi</th>
+        <th>Data Transaksi VS Data Recon</th>
+        <th class="nominal-th">Data Recon VS Data Transaksi</th>
+        <th class="nominal-th">Data Transaksi VS Data Recon</th>
       </tr>
     </thead>
     <tbody id="unifiedMatrixBody">
@@ -489,13 +484,15 @@ RANGER+
 <script>
 const CSV_URL = "https://docs.google.com/spreadsheets/d/1ESHhGJY32qC7fSFLx8HoDwGdYu2XA94mCPFEkTQCp0w/export?format=csv&gid=0";
 
+// Format mata uang tanpa menggunakan pecahan desimal ,00
 function formatCurrency(value){
 let num = parseFloat(String(value || 0).replace(/[^0-9.-]/g,''));
 if(isNaN(num)) num = 0;
 return new Intl.NumberFormat('id-ID',{
 style:'currency',
 currency:'IDR',
-minimumFractionDigits:2
+minimumFractionDigits:0,
+maximumFractionDigits:0
 }).format(num);
 }
 
@@ -535,43 +532,37 @@ unifiedMatrixBody.innerHTML = "";
 hasilBody.innerHTML = "";
 hasilKananBody.innerHTML = "";
 
-// 1. MAPPING MATRIX RESUME HORIZONTAL (Baris 2 & 3 untuk Qty, Baris 7 & 8 untuk Nominal)
-const rowQty1 = rows[2] || [];
-const rowQty2 = rows[3] || [];
-const rowNom1 = rows[7] || [];
-const rowNom2 = rows[8] || [];
+// Mengambil baris data GSheet asli untuk pemetaan vertikal (Kolom C, D, E, F)
+const rQty1 = rows[2] || []; // Data Recon dibanding Data Transaksi (Volume)
+const rQty2 = rows[3] || []; // Data Transaksi dibanding Data Recon (Volume)
+const rNom1 = rows[7] || []; // Data Recon dibanding Data Transaksi (Nominal)
+const rNom2 = rows[8] || []; // Data Transaksi dibanding Data Recon (Nominal)
 
-unifiedMatrixBody.innerHTML += `
-<tr>
-  <td class="label-cell">🔄 Recon vs Transaksi</td>
-  <td>${rowQty1[2] || '-'}</td>
-  <td>${rowQty1[3] || '-'}</td>
-  <td>${rowQty1[4] || '-'}</td>
-  <td>${rowQty1[5] || '-'}</td>
-  <td>${rowNom1[2] ? formatCurrency(rowNom1[2]) : '-'}</td>
-  <td>${rowNom1[3] ? formatCurrency(rowNom1[3]) : '-'}</td>
-  <td>${rowNom1[4] ? formatCurrency(rowNom1[4]) : '-'}</td>
-  <td>${rowNom1[5] ? formatCurrency(rowNom1[5]) : '-'}</td>
-</tr>
-<tr>
-  <td class="label-cell">🔄 Transaksi vs Recon</td>
-  <td>${rowQty2[2] || '-'}</td>
-  <td>${rowQty2[3] || '-'}</td>
-  <td>${rowQty2[4] || '-'}</td>
-  <td>${rowQty2[5] || '-'}</td>
-  <td>${rowNom2[2] ? formatCurrency(rowNom2[2]) : '-'}</td>
-  <td>${rowNom2[3] ? formatCurrency(rowNom2[3]) : '-'}</td>
-  <td>${rowNom2[4] ? formatCurrency(rowNom2[4]) : '-'}</td>
-  <td>${rowNom2[5] ? formatCurrency(rowNom2[5]) : '-'}</td>
-</tr>
-`;
+const statusLabels = [
+  { label: "📊 TOTAL", idx: 2 }, // Kolom C (Total)
+  { label: "✅ OK", idx: 3 },    // Kolom D (OK)
+  { label: "↩️ REFUND", idx: 4 },// Kolom E (Refund)
+  { label: "❌ NOT OK", idx: 5 } // Kolom F (NOT OK)
+];
 
-// 2. MAPPING DETAIL TABEL DATA (Dimulai Tepat dari Baris index ke-12)
+statusLabels.forEach(item => {
+  unifiedMatrixBody.innerHTML += `
+  <tr>
+    <td class="label-cell">${item.label}</td>
+    <td>${rQty1[item.idx] || '-'}</td>
+    <td>${rQty2[item.idx] || '-'}</td>
+    <td>${rNom1[item.idx] ? formatCurrency(rNom1[item.idx]) : '-'}</td>
+    <td>${rNom2[item.idx] ? formatCurrency(rNom2[item.idx]) : '-'}</td>
+  </tr>
+  `;
+});
+
+// Mapping data baris tabel bawah (Dimulai baris ke-13)
 for(let i=12; i<rows.length; i++){
 const row = rows[i];
 if(!row || row.every(cell => !cell)) continue;
 
-// Tabel Kiri: Kolom A sampai F (index 0 s.d 5)
+// Tabel Kiri (Kolom A s.d F)
 if(row[0] || row[1] || row[2]){
 hasilBody.innerHTML += `
 <tr>
@@ -585,7 +576,7 @@ hasilBody.innerHTML += `
 `;
 }
 
-// Tabel Kanan: Kolom H sampai M (index 7 s.d 12)
+// Tabel Kanan (Kolom H s.d M)
 if(row[7] || row[8] || row[9]){
 hasilKananBody.innerHTML += `
 <tr>
@@ -619,7 +610,7 @@ const area = document.getElementById("reportArea");
 const originalWidth = area.style.width;
 const originalMinWidth = area.style.minWidth;
 
-// Penguncian resolusi canvas HD
+// Memastikan render canvas dalam resolusi HD yang pas
 area.style.width = "1420px";
 area.style.minWidth = "1420px";
 
