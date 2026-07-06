@@ -13,24 +13,25 @@
 
 body{
 margin:0;
-padding:30px;
+padding:20px;
 background:#edf4ff;
 color:#1f2937;
 }
 
 .wrapper{
-max-width:1400px;
+width: 100%;
+max-width: 1320px; /* Disesuaikan agar pas dan tidak meluap di monitor 1366x768 */
 margin:auto;
 }
 
 .toolbar{
 background:#fff;
-padding:20px;
-border-radius:20px;
+padding:15px 20px;
+border-radius:16px;
 box-shadow:0 10px 30px rgba(0,0,0,.08);
-margin-bottom:25px;
+margin-bottom:20px;
 display:flex;
-gap:20px;
+gap:15px;
 flex-wrap:wrap;
 align-items:center;
 }
@@ -42,16 +43,16 @@ gap:10px;
 }
 
 .toolbar-label{
-font-size:20px;
+font-size:16px;
 font-weight:bold;
 color:#1f2937;
 }
 
 select,button{
-padding:14px 18px;
+padding:10px 14px;
 border:none;
-border-radius:14px;
-font-size:20px;
+border-radius:10px;
+font-size:16px;
 }
 
 select{
@@ -77,15 +78,16 @@ color:#fff;
 
 .report{
 background:#fff;
-border-radius:28px;
+border-radius:24px;
 overflow:hidden;
 box-shadow:0 12px 40px rgba(0,0,0,.08);
+width: 100%;
 }
 
 /* ================= HEADER STYLE LAYOUT ================= */
 .header{
 background:linear-gradient(135deg, #002f87 0%, #1565c0 45%, #ff8f00 100%) !important;
-padding:35px 40px !important;
+padding:25px 30px !important;
 color:#fff !important;
 display:block !important;
 clear:both !important;
@@ -94,7 +96,7 @@ clear:both !important;
 .header-table {
 width:100% !important;
 border-collapse:collapse !important;
-margin-bottom:10px !important;
+margin-bottom:5px !important;
 background:transparent !important;
 }
 
@@ -118,9 +120,9 @@ vertical-align:middle !important;
 
 .qris-main-text {
 font-family:"Arial Black", Arial, Helvetica, sans-serif !important;
-font-size:56px !important; 
+font-size:44px !important; 
 font-weight:900 !important;
-letter-spacing:-3px !important; 
+letter-spacing:-2px !important; 
 color:#ffffff !important; 
 margin:0 !important;
 padding:0 !important;
@@ -131,15 +133,15 @@ vertical-align:middle !important;
 
 .qris-sub-text-side {
 display:inline-block !important;
-border-left:3px solid #ffffff !important; 
-padding-left:10px !important;
-margin-left:12px !important;
+border-left:2px solid #ffffff !important; 
+padding-left:8px !important;
+margin-left:10px !important;
 text-align:left !important;
 vertical-align:middle !important;
 }
 
 .qris-sub-line1, .qris-sub-line2 {
-font-size:15px !important;
+font-size:13px !important;
 font-weight:bold !important;
 font-style:italic !important;
 color:#ffffff !important;
@@ -156,7 +158,7 @@ width:50% !important;
 .ranger {
 display:inline-block !important;
 text-align:right !important;
-font-size:34px !important;
+font-size:28px !important;
 font-style:italic !important;
 font-weight:900 !important;
 line-height:1 !important;
@@ -165,8 +167,8 @@ color:#ffffff !important;
 
 .ranger small {
 display:block !important;
-margin-top:4px !important;
-font-size:11px !important;
+margin-top:2px !important;
+font-size:9px !important;
 letter-spacing:0.5px !important;
 font-weight:700 !important;
 opacity:0.95 !important;
@@ -174,8 +176,8 @@ font-style:normal !important;
 }
 
 .header h1.main-title {
-margin:25px 0 0 0 !important;
-font-size:42px !important;
+margin:15px 0 0 0 !important;
+font-size:32px !important;
 font-weight:800 !important;
 text-align:center !important;
 color:#ffffff !important;
@@ -186,7 +188,7 @@ clear:both !important;
 
 .subtitle{
 margin-top:4px;
-font-size:20px;
+font-size:16px;
 font-weight:bold;
 text-align:center;
 width:100%;
@@ -195,8 +197,8 @@ clear:both;
 }
 
 .subtitle-pic {
-margin-top:8px;
-font-size:18px;
+margin-top:6px;
+font-size:15px;
 font-weight:bold;
 text-align:center;
 width:100%;
@@ -206,90 +208,30 @@ clear:both;
 
 /* ================= CONTENT AREA ================= */
 .content{
-padding:30px;
+padding:20px;
 }
 
-.section-title{
-font-size:23px;
-font-weight:bold;
-margin-bottom:14px;
-color:#1565c0;
-text-shadow:0 1px 2px rgba(0,0,0,.08);
-letter-spacing:.3px;
+/* Unified Summary Box Style */
+.unified-summary-card {
+background: #fff;
+border-radius: 16px;
+overflow: hidden;
+border: 1px solid #d8d8d8;
+box-shadow: 0 4px 15px rgba(0,0,0,.03);
+margin-bottom: 20px;
 }
 
-table.main-data-table{
-width:100%;
-border-collapse:collapse;
-margin-bottom:30px;
-overflow:hidden;
-border-radius:18px;
-}
-
-table.main-data-table th{
-background:#1565c0;
-color:#fff;
-padding:10px 8px;
-font-size:11px;
-text-align:center;
-vertical-align:middle;
-text-transform: uppercase;
-font-weight:800;
-border:1px solid #cfcfcf;
-}
-
-table.main-data-table td{
-padding:10px 8px;
-border:1px solid #cfcfcf;
-font-size:11px;
-color:#111827;
-font-weight:600;
-text-align:center;
-}
-
-table.main-data-table tbody tr:nth-child(even){
-background:#f8fbff;
-}
-
-.loading{
-text-align:center;
-padding:15px;
-font-weight:bold;
-color:#1565c0;
-}
-
-.summary-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:24px;
-margin-bottom:20px;
-}
-
-.summary-box{
-background:#fff;
-border-radius:14px;
-overflow:hidden;
-border:1px solid #d8d8d8;
-}
-
-.summary-header{
-font-size:22px;
-padding:14px;
+.unified-summary-header {
+background: linear-gradient(90deg, #0d47a1 0%, #1565c0 50%, #ef6c00 100%);
+font-size: 18px;
+padding:12px;
 font-weight:800;
 text-align:center;
 color:#fff;
-letter-spacing:.4px;
+letter-spacing:.5px;
 }
 
-.blue-header{
-background:#0d47a1;
-}
-
-.orange-header{
-background:#ff8c00;
-}
-
-/* ================= TABEL RESUME MATRIX ================= */
+/* Unified Matrix Table Layout */
 .matrix-table{
 width:100% !important;
 border-collapse:collapse !important;
@@ -297,32 +239,35 @@ table-layout:fixed !important;
 }
 
 .matrix-table th{
-font-size:11px !important;               
+font-size:10px !important;               
 font-weight:800 !important;
 padding:8px 4px !important;
-line-height:1 !important;
+line-height:1.2 !important;
 border:1px solid #cfcfcf !important;
-background:#ffffff !important;
+background:#f8fafc !important;
 color:#1e3a8a !important;
 vertical-align:middle !important;
 text-align:center !important;
-white-space:nowrap !important;           
-text-transform: uppercase
+text-transform: uppercase;
 }
 
-.nominal-matrix th{
-color:#ef6c00 !important;
+.matrix-table th.nominal-th {
+color: #c25e00 !important;
 }
 
 .matrix-table td{
-font-size:13px !important;               
+font-size:11px !important;               
 font-weight:900 !important;
-padding:10px 8px !important;
+padding:8px 6px !important;
 line-height:1.2 !important;
 border:1px solid #cfcfcf !important;
 text-align:center !important;
 background:#fff !important;
 color:#111827 !important;
+}
+
+.matrix-table tbody tr:nth-child(even) td:not(.label-cell){
+background:#fdfefe !important;
 }
 
 .label-cell{
@@ -337,10 +282,75 @@ vertical-align:middle !important;
 white-space:nowrap !important;
 }
 
-@media(max-width:1000px){
-.summary-grid{
-grid-template-columns:1fr;
+/* LAYOUT GRID UNTUK LAYAR MONITOR KECIL (1366px) */
+.main-tables-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 15px;
+margin-bottom: 10px;
+align-items: start;
 }
+
+.section-title{
+font-size:12px;
+font-weight:bold;
+margin-bottom:10px;
+color:#1565c0;
+text-shadow:0 1px 1px rgba(0,0,0,.05);
+letter-spacing:.2px;
+min-height: 36px;
+display: flex;
+align-items: center;
+}
+
+table.main-data-table{
+width:100%;
+border-collapse:collapse;
+margin-bottom:20px;
+overflow:hidden;
+border-radius:10px;
+border:1px solid #cfcfcf;
+}
+
+table.main-data-table th{
+background:#1565c0;
+color:#fff;
+padding:8px 2px;
+font-size:9px;
+text-align:center;
+vertical-align:middle;
+text-transform: uppercase;
+font-weight:800;
+border:1px solid #cfcfcf;
+}
+
+table.main-data-table.right-theme th {
+background: #ff8f00;
+}
+.right-title {
+color: #ff8f00 !important;
+}
+
+table.main-data-table td{
+padding:7px 2px;
+border:1px solid #cfcfcf;
+font-size:10px;
+color:#111827;
+font-weight:600;
+text-align:center;
+word-break: break-all;
+}
+
+table.main-data-table tbody tr:nth-child(even){
+background:#f8fbff;
+}
+
+.loading{
+text-align:center;
+padding:10px;
+font-weight:bold;
+color:#1565c0;
+font-size:14px;
 }
 </style>
 </head>
@@ -409,65 +419,70 @@ RANGER+
 
 <div class="content">
 
-<div class="summary-grid">
-<div class="summary-box">
-<div class="summary-header blue-header">RESUME CROSSCHECK</div>
-<table class="matrix-table">
-<thead>
-<tr>
-<th style="width: 22%;">Status</th>
-<th style="width: 39%;">Data Recon VS Data Transaksi</th>
-<th style="width: 39%;">Data Transaksi VS Data Recon</th>
-</tr>
-</thead>
-<tbody id="resumeBody">
-<tr><td class="label-cell">📊 TOTAL</td><td>-</td><td>-</td></tr>
-<tr><td class="label-cell">✅ OK</td><td>-</td><td>-</td></tr>
-<tr><td class="label-cell">↩️ REFUND</td><td>-</td><td>-</td></tr>
-<tr><td class="label-cell">❌ NOT OK</td><td>-</td><td>-</td></tr>
-</tbody>
-</table>
+<div class="unified-summary-card">
+  <div class="unified-summary-header">RESUME CROSSCHECK DATA & NOMINAL</div>
+  <table class="matrix-table">
+    <thead>
+      <tr>
+        <th rowspan="2" style="width: 14%; vertical-align: middle;">Status</th>
+        <th colspan="2" style="width: 43%;">Volume Transaksi (Qty)</th>
+        <th colspan="2" style="width: 43%;" class="nominal-th">Nominal Transaksi (IDR)</th>
+      </tr>
+      <tr>
+        <th>Data Recon VS Data Transaksi</th>
+        <th>Data Transaksi VS Data Recon</th>
+        <th class="nominal-th">Data Recon VS Data Transaksi</th>
+        <th class="nominal-th">Data Transaksi VS Data Recon</th>
+      </tr>
+    </thead>
+    <tbody id="unifiedMatrixBody">
+      <tr><td class="label-cell">📊 TOTAL</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr><td class="label-cell">✅ OK</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr><td class="label-cell">↩️ REFUND</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr><td class="label-cell">❌ NOT OK</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+    </tbody>
+  </table>
 </div>
 
-<div class="summary-box">
-<div class="summary-header orange-header">RESUME NOMINAL CROSSCHECK</div>
-<table class="matrix-table nominal-matrix">
-<thead>
-<tr>
-<th style="width: 22%;">Status</th>
-<th style="width: 39%;">Data Recon VS Data Transaksi</th>
-<th style="width: 39%;">Data Transaksi VS Data Recon</th>
-</tr>
-</thead>
-<tbody id="nominalBody">
-<tr><td class="label-cell">📊 TOTAL</td><td>-</td><td>-</td></tr>
-<tr><td class="label-cell">✅ OK</td><td>-</td><td>-</td></tr>
-<tr><td class="label-cell">↩️ REFUND</td><td>-</td><td>-</td></tr>
-<tr><td class="label-cell">❌ NOT OK</td><td>-</td><td>-</td></tr>
-</tbody>
-</table>
-</div>
-</div>
+<div class="main-tables-grid">
+  
+  <div>
+    <div class="section-title">HASIL CROSSCHECK DATA RECON DIBANDING DATA TRANSAKSI</div>
+    <table class="main-data-table">
+    <thead>
+    <tr>
+      <th style="width: 6%;">No</th>
+      <th style="width: 27%;">Waktu Transaksi</th>
+      <th style="width: 17%;">ID Transaksi</th>
+      <th style="width: 25%;">ID Trx Reff</th>
+      <th style="width: 5%;">RC</th>
+      <th style="width: 5%;">PC</th>
+      <th style="width: 15%;">Nominal</th>
+    </tr>
+    </thead>
+    <tbody id="hasilBody"></tbody>
+    </table>
+  </div>
 
-<div class="section-title">HASIL CROSSCHECK DATA RECON DIBANDING DATA TRANSAKSI</div>
+  <div>
+    <div class="section-title right-title">HASIL CROSSCHECK DATA TRANSAKSI DIBANDING DATA RECON</div>
+    <table class="main-data-table right-theme">
+    <thead>
+    <tr>
+      <th style="width: 6%;">No</th>
+      <th style="width: 27%;">Waktu Transaksi</th>
+      <th style="width: 17%;">ID Transaksi</th>
+      <th style="width: 25%;">ID Trx Reff</th>
+      <th style="width: 5%;">RC</th>
+      <th style="width: 5%;">PC</th>
+      <th style="width: 15%;">Nominal</th>
+    </tr>
+    </thead>
+    <tbody id="hasilKananBody"></tbody>
+    </table>
+  </div>
 
-<table class="main-data-table">
-<thead>
-<tr>
-<th>Nomor</th>
-<th>Waktu Transaksi</th>
-<th>ID Transaksi</th>
-<th>ID Trx Reff</th>
-<th>RC</th>
-<th>PC</th>
-<th>Nominal</th>
-<th>Tips</th>
-<th>Merchant Category</th>
-<th>Merchant Criteria</th>
-</tr>
-</thead>
-<tbody id="hasilBody"></tbody>
-</table>
+</div>
 
 <div class="loading" id="loading"></div>
 
@@ -516,41 +531,35 @@ header:false,
 skipEmptyLines:false,
 complete:function(result){
 const rows = result.data;
-const resumeBody = document.getElementById("resumeBody");
-const nominalBody = document.getElementById("nominalBody");
+const unifiedMatrixBody = document.getElementById("unifiedMatrixBody");
 const hasilBody = document.getElementById("hasilBody");
+const hasilKananBody = document.getElementById("hasilKananBody");
 
-resumeBody.innerHTML = "";
-nominalBody.innerHTML = "";
+unifiedMatrixBody.innerHTML = "";
 hasilBody.innerHTML = "";
+hasilKananBody.innerHTML = "";
 
-const fixedResumeLabels = ["📊 TOTAL","✅ OK","↩️ REFUND","❌ NOT OK"];
-for(let i=0;i<4;i++){
-const row = rows[i+2] || [];
-resumeBody.innerHTML += `
-<tr>
-<td class="label-cell">${fixedResumeLabels[i]}</td>
-<td>${row[2] ? row[2] : '-'}</td>
-<td>${row[3] ? row[3] : '-'}</td>
-</tr>
-`;
+const fixedMatrixLabels = ["📊 TOTAL","✅ OK","↩️ REFUND","❌ NOT OK"];
+for(let i=0; i<4; i++){
+  const qtyRow = rows[i+3] || [];     
+  const nominalRow = rows[i+8] || []; 
+  
+  unifiedMatrixBody.innerHTML += `
+  <tr>
+    <td class="label-cell">${fixedMatrixLabels[i]}</td>
+    <td>${qtyRow[2] ? qtyRow[2] : '-'}</td>
+    <td>${qtyRow[3] ? qtyRow[3] : '-'}</td>
+    <td>${nominalRow[2] ? formatCurrency(nominalRow[2]) : '-'}</td>
+    <td>${nominalRow[3] ? formatCurrency(nominalRow[3]) : '-'}</td>
+  </tr>
+  `;
 }
 
-const fixedNominalLabels = ["📊 TOTAL","✅ OK","↩️ REFUND","❌ NOT OK"];
-for(let i=0;i<4;i++){
-const row = rows[i+7] || [];
-nominalBody.innerHTML += `
-<tr>
-<td class="label-cell">${fixedNominalLabels[i]}</td>
-<td>${row[2] ? formatCurrency(row[2]) : '-'}</td>
-<td>${row[3] ? formatCurrency(row[3]) : '-'}</td>
-</tr>
-`;
-}
-
-for(let i=12;i<rows.length;i++){
+for(let i=15; i<rows.length; i++){
 const row = rows[i];
 if(!row || row.every(cell => !cell)) continue;
+
+if(row[0] || row[1] || row[2]){
 hasilBody.innerHTML += `
 <tr>
 <td>${row[0] || ''}</td>
@@ -559,12 +568,24 @@ hasilBody.innerHTML += `
 <td>${row[3] || ''}</td>
 <td>${row[4] || ''}</td>
 <td>${row[5] || ''}</td>
-<td>${formatCurrency(row[6])}</td>
-<td>${row[7] || ''}</td>
-<td>${row[8] || ''}</td>
-<td>${row[9] || ''}</td>
+<td>${row[6] ? formatCurrency(row[6]) : ''}</td>
 </tr>
 `;
+}
+
+if(row[8] || row[9] || row[10]){
+hasilKananBody.innerHTML += `
+<tr>
+<td>${row[8] || ''}</td>
+<td>${row[9] || ''}</td>
+<td>${row[10] || ''}</td>
+<td>${row[11] || ''}</td>
+<td>${row[12] || ''}</td>
+<td>${row[13] || ''}</td>
+<td>${row[14] ? formatCurrency(row[14]) : ''}</td>
+</tr>
+`;
+}
 }
 
 document.getElementById("loading").innerText = "Data berhasil digenerate";
@@ -583,34 +604,34 @@ document.getElementById("loading").innerText = "Gagal mengambil data Google Shee
 async function copyImage(){
 const area = document.getElementById("reportArea");
 
-// 1. Simpan style layout asli bawaan layar aktif
+// Trik agar hasil render konstan beresolusi tinggi tanpa peduli layar monitor pengguna:
+// Simpan style lama pelindung responsivitas
 const originalWidth = area.style.width;
 const originalMinWidth = area.style.minWidth;
 
-// 2. Paksa elemen melebar ke resolusi standar ideal (1400px) sebelum difoto
-area.style.width = "1400px";
-area.style.minWidth = "1400px";
+// Paksa render element pada layout lebar canvas standar professional laporan (1420px)
+area.style.width = "1420px";
+area.style.minWidth = "1420px";
 
-// Beri waktu microsecond bagi browser untuk render ulang lebar baru
-await new Promise(resolve => setTimeout(resolve, 50));
+// Berikan jeda mikrosekon agar html2canvas menangkap perubahan dimensi mutlak ini
+await new Promise(resolve => setTimeout(resolve, 150));
 
-// 3. Eksekusi html2canvas dengan scale 2 (Lebar gambar akhir = 1400 x 2 = 2800px)
 const canvas = await html2canvas(area,{
-scale:2,
+scale:2, // Melipatgandakan 1420px * 2 = Resolusi lebar gambar akhir adalah 2840px (Sangat Jernih)
 useCORS:true,
 logging:false
 });
 
-// 4. Kembalikan layout web ke kondisi aslinya agar tetap rapi di layar monitor Anda
+// Kembalikan layout web view Anda ke ukuran 1366px semula agar tidak rusak setelah diklik
 area.style.width = originalWidth;
 area.style.minWidth = originalMinWidth;
 
 canvas.toBlob(async(blob)=>{
 try{
 await navigator.clipboard.write([new ClipboardItem({"image/png":blob})]);
-alert("✅ Image berhasil dicopy dengan resolusi tinggi (2800px)!");
+alert("✅ Gambar laporan HD (2840px) berhasil disalin ke clipboard!");
 }catch{
-alert("❌ Browser tidak mendukung copy image langsung");
+alert("❌ Gagal menyalin gambar secara otomatis.");
 }
 },"image/png");
 }
