@@ -13,23 +13,23 @@
 
 body{
 margin:0;
-padding:20px;
+padding:15px;
 background:#edf4ff;
 color:#1f2937;
 }
 
 .wrapper{
 width: 100%;
-max-width: 1320px; /* Disesuaikan agar pas dan tidak meluap di monitor 1366x768 */
+max-width: 1320px; /* Sangat pas untuk resolusi monitor 1366x768 */
 margin:auto;
 }
 
 .toolbar{
 background:#fff;
-padding:15px 20px;
-border-radius:16px;
-box-shadow:0 10px 30px rgba(0,0,0,.08);
-margin-bottom:20px;
+padding:12px 20px;
+border-radius:14px;
+box-shadow:0 8px 25px rgba(0,0,0,.06);
+margin-bottom:15px;
 display:flex;
 gap:15px;
 flex-wrap:wrap;
@@ -39,20 +39,20 @@ align-items:center;
 .toolbar-group{
 display:flex;
 align-items:center;
-gap:10px;
+gap:8px;
 }
 
 .toolbar-label{
-font-size:16px;
+font-size:15px;
 font-weight:bold;
 color:#1f2937;
 }
 
 select,button{
-padding:10px 14px;
+padding:8px 14px;
 border:none;
-border-radius:10px;
-font-size:16px;
+border-radius:8px;
+font-size:15px;
 }
 
 select{
@@ -78,16 +78,16 @@ color:#fff;
 
 .report{
 background:#fff;
-border-radius:24px;
+border-radius:20px;
 overflow:hidden;
-box-shadow:0 12px 40px rgba(0,0,0,.08);
+box-shadow:0 10px 35px rgba(0,0,0,.06);
 width: 100%;
 }
 
-/* ================= HEADER STYLE LAYOUT ================= */
+/* ================= HEADER LAYOUT SENSE ================= */
 .header{
 background:linear-gradient(135deg, #002f87 0%, #1565c0 45%, #ff8f00 100%) !important;
-padding:25px 30px !important;
+padding:20px 25px !important;
 color:#fff !important;
 display:block !important;
 clear:both !important;
@@ -120,7 +120,7 @@ vertical-align:middle !important;
 
 .qris-main-text {
 font-family:"Arial Black", Arial, Helvetica, sans-serif !important;
-font-size:44px !important; 
+font-size:38px !important; 
 font-weight:900 !important;
 letter-spacing:-2px !important; 
 color:#ffffff !important; 
@@ -135,13 +135,13 @@ vertical-align:middle !important;
 display:inline-block !important;
 border-left:2px solid #ffffff !important; 
 padding-left:8px !important;
-margin-left:10px !important;
+margin-left:8px !important;
 text-align:left !important;
 vertical-align:middle !important;
 }
 
 .qris-sub-line1, .qris-sub-line2 {
-font-size:13px !important;
+font-size:12px !important;
 font-weight:bold !important;
 font-style:italic !important;
 color:#ffffff !important;
@@ -158,7 +158,7 @@ width:50% !important;
 .ranger {
 display:inline-block !important;
 text-align:right !important;
-font-size:28px !important;
+font-size:24px !important;
 font-style:italic !important;
 font-weight:900 !important;
 line-height:1 !important;
@@ -176,28 +176,18 @@ font-style:normal !important;
 }
 
 .header h1.main-title {
-margin:15px 0 0 0 !important;
-font-size:32px !important;
+margin:12px 0 0 0 !important;
+font-size:28px !important;
 font-weight:800 !important;
 text-align:center !important;
 color:#ffffff !important;
-letter-spacing:.5px !important;
+letter-spacing:.3px !important;
 display:block !important;
 clear:both !important;
 }
 
 .subtitle{
 margin-top:4px;
-font-size:16px;
-font-weight:bold;
-text-align:center;
-width:100%;
-display:block;
-clear:both;
-}
-
-.subtitle-pic {
-margin-top:6px;
 font-size:15px;
 font-weight:bold;
 text-align:center;
@@ -206,32 +196,42 @@ display:block;
 clear:both;
 }
 
-/* ================= CONTENT AREA ================= */
+.subtitle-pic {
+margin-top:4px;
+font-size:14px;
+font-weight:bold;
+text-align:center;
+width:100%;
+display:block;
+clear:both;
+}
+
+/* ================= CONTENT DATA CONTAINER ================= */
 .content{
 padding:20px;
 }
 
-/* Unified Summary Box Style */
+/* Penyatuan Box Resume */
 .unified-summary-card {
 background: #fff;
-border-radius: 16px;
+border-radius: 14px;
 overflow: hidden;
-border: 1px solid #d8d8d8;
-box-shadow: 0 4px 15px rgba(0,0,0,.03);
+border: 1px solid #cfcfcf;
+box-shadow: 0 4px 12px rgba(0,0,0,.02);
 margin-bottom: 20px;
 }
 
 .unified-summary-header {
 background: linear-gradient(90deg, #0d47a1 0%, #1565c0 50%, #ef6c00 100%);
-font-size: 18px;
-padding:12px;
+font-size: 16px;
+padding:10px;
 font-weight:800;
 text-align:center;
 color:#fff;
-letter-spacing:.5px;
+letter-spacing:.4px;
 }
 
-/* Unified Matrix Table Layout */
+/* Susunan Tabel Matrix Resume Sesuai Gambar GSheet */
 .matrix-table{
 width:100% !important;
 border-collapse:collapse !important;
@@ -244,7 +244,7 @@ font-weight:800 !important;
 padding:8px 4px !important;
 line-height:1.2 !important;
 border:1px solid #cfcfcf !important;
-background:#f8fafc !important;
+background:#f1f5f9 !important;
 color:#1e3a8a !important;
 vertical-align:middle !important;
 text-align:center !important;
@@ -252,14 +252,14 @@ text-transform: uppercase;
 }
 
 .matrix-table th.nominal-th {
-color: #c25e00 !important;
+color: #b45309 !important;
+background: #fef3c7 !important;
 }
 
 .matrix-table td{
 font-size:11px !important;               
-font-weight:900 !important;
+font-weight:800 !important;
 padding:8px 6px !important;
-line-height:1.2 !important;
 border:1px solid #cfcfcf !important;
 text-align:center !important;
 background:#fff !important;
@@ -267,48 +267,46 @@ color:#111827 !important;
 }
 
 .matrix-table tbody tr:nth-child(even) td:not(.label-cell){
-background:#fdfefe !important;
+background:#f8fafc !important;
 }
 
 .label-cell{
 font-size:10px !important;               
 font-weight:800 !important;
-letter-spacing:.2px !important;
 background:#f3f4f6 !important;
 color:#111827 !important;
 text-align:left !important;
-padding-left:10px !important;
-vertical-align:middle !important;
+padding-left:12px !important;
 white-space:nowrap !important;
 }
 
-/* LAYOUT GRID UNTUK LAYAR MONITOR KECIL (1366px) */
+/* GRID UTAMA UNTUK DUA TABEL DATA BAWAH */
 .main-tables-grid {
 display: grid;
 grid-template-columns: 1fr 1fr;
 gap: 15px;
-margin-bottom: 10px;
+margin-bottom: 5px;
 align-items: start;
 }
 
 .section-title{
-font-size:12px;
+font-size:11px;
 font-weight:bold;
-margin-bottom:10px;
+margin-bottom:8px;
 color:#1565c0;
-text-shadow:0 1px 1px rgba(0,0,0,.05);
 letter-spacing:.2px;
-min-height: 36px;
+min-height: 32px;
 display: flex;
 align-items: center;
+text-transform: uppercase;
 }
 
 table.main-data-table{
 width:100%;
 border-collapse:collapse;
-margin-bottom:20px;
+margin-bottom:15px;
 overflow:hidden;
-border-radius:10px;
+border-radius:8px;
 border:1px solid #cfcfcf;
 }
 
@@ -324,6 +322,7 @@ font-weight:800;
 border:1px solid #cfcfcf;
 }
 
+/* Tema Warna Tabel Kanan (Kotak Merah) */
 table.main-data-table.right-theme th {
 background: #ff8f00;
 }
@@ -332,13 +331,12 @@ color: #ff8f00 !important;
 }
 
 table.main-data-table td{
-padding:7px 2px;
+padding:6px 2px;
 border:1px solid #cfcfcf;
 font-size:10px;
 color:#111827;
 font-weight:600;
 text-align:center;
-word-break: break-all;
 }
 
 table.main-data-table tbody tr:nth-child(even){
@@ -350,7 +348,7 @@ text-align:center;
 padding:10px;
 font-weight:bold;
 color:#1565c0;
-font-size:14px;
+font-size:13px;
 }
 </style>
 </head>
@@ -424,23 +422,23 @@ RANGER+
   <table class="matrix-table">
     <thead>
       <tr>
-        <th rowspan="2" style="width: 14%; vertical-align: middle;">Status</th>
-        <th colspan="2" style="width: 43%;">Volume Transaksi (Qty)</th>
-        <th colspan="2" style="width: 43%;" class="nominal-th">Nominal Transaksi (IDR)</th>
+        <th rowspan="2" style="width: 28%; vertical-align: middle;">Sistem Pembanding</th>
+        <th colspan="4" style="width: 36%;">Volume Transaksi (Qty)</th>
+        <th colspan="4" style="width: 36%;" class="nominal-th">Nominal Transaksi (IDR)</th>
       </tr>
       <tr>
-        <th>Data Recon VS Data Transaksi</th>
-        <th>Data Transaksi VS Data Recon</th>
-        <th class="nominal-th">Data Recon VS Data Transaksi</th>
-        <th class="nominal-th">Data Transaksi VS Data Recon</th>
+        <th>Total</th>
+        <th>OK</th>
+        <th>Refund</th>
+        <th>Not OK</th>
+        <th class="nominal-th">Total</th>
+        <th class="nominal-th">OK</th>
+        <th class="nominal-th">Refund</th>
+        <th class="nominal-th">Not OK</th>
       </tr>
     </thead>
     <tbody id="unifiedMatrixBody">
-      <tr><td class="label-cell">📊 TOTAL</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-      <tr><td class="label-cell">✅ OK</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-      <tr><td class="label-cell">↩️ REFUND</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-      <tr><td class="label-cell">❌ NOT OK</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
-    </tbody>
+      </tbody>
   </table>
 </div>
 
@@ -451,13 +449,12 @@ RANGER+
     <table class="main-data-table">
     <thead>
     <tr>
-      <th style="width: 6%;">No</th>
-      <th style="width: 27%;">Waktu Transaksi</th>
-      <th style="width: 17%;">ID Transaksi</th>
-      <th style="width: 25%;">ID Trx Reff</th>
-      <th style="width: 5%;">RC</th>
-      <th style="width: 5%;">PC</th>
-      <th style="width: 15%;">Nominal</th>
+      <th style="width: 8%;">No</th>
+      <th style="width: 26%;">Waktu Transaksi</th>
+      <th style="width: 18%;">ID Transaksi</th>
+      <th style="width: 24%;">ID Trx Reff</th>
+      <th style="width: 8%;">RC</th>
+      <th style="width: 16%;">Nominal</th>
     </tr>
     </thead>
     <tbody id="hasilBody"></tbody>
@@ -469,13 +466,12 @@ RANGER+
     <table class="main-data-table right-theme">
     <thead>
     <tr>
-      <th style="width: 6%;">No</th>
-      <th style="width: 27%;">Waktu Transaksi</th>
-      <th style="width: 17%;">ID Transaksi</th>
-      <th style="width: 25%;">ID Trx Reff</th>
-      <th style="width: 5%;">RC</th>
-      <th style="width: 5%;">PC</th>
-      <th style="width: 15%;">Nominal</th>
+      <th style="width: 8%;">No</th>
+      <th style="width: 26%;">Waktu Transaksi</th>
+      <th style="width: 18%;">ID Transaksi</th>
+      <th style="width: 24%;">ID Trx Reff</th>
+      <th style="width: 8%;">RC</th>
+      <th style="width: 16%;">Nominal</th>
     </tr>
     </thead>
     <tbody id="hasilKananBody"></tbody>
@@ -539,26 +535,43 @@ unifiedMatrixBody.innerHTML = "";
 hasilBody.innerHTML = "";
 hasilKananBody.innerHTML = "";
 
-const fixedMatrixLabels = ["📊 TOTAL","✅ OK","↩️ REFUND","❌ NOT OK"];
-for(let i=0; i<4; i++){
-  const qtyRow = rows[i+3] || [];     
-  const nominalRow = rows[i+8] || []; 
-  
-  unifiedMatrixBody.innerHTML += `
-  <tr>
-    <td class="label-cell">${fixedMatrixLabels[i]}</td>
-    <td>${qtyRow[2] ? qtyRow[2] : '-'}</td>
-    <td>${qtyRow[3] ? qtyRow[3] : '-'}</td>
-    <td>${nominalRow[2] ? formatCurrency(nominalRow[2]) : '-'}</td>
-    <td>${nominalRow[3] ? formatCurrency(nominalRow[3]) : '-'}</td>
-  </tr>
-  `;
-}
+// 1. MAPPING MATRIX RESUME HORIZONTAL (Baris 2 & 3 untuk Qty, Baris 7 & 8 untuk Nominal)
+const rowQty1 = rows[2] || [];
+const rowQty2 = rows[3] || [];
+const rowNom1 = rows[7] || [];
+const rowNom2 = rows[8] || [];
 
-for(let i=15; i<rows.length; i++){
+unifiedMatrixBody.innerHTML += `
+<tr>
+  <td class="label-cell">🔄 Recon vs Transaksi</td>
+  <td>${rowQty1[2] || '-'}</td>
+  <td>${rowQty1[3] || '-'}</td>
+  <td>${rowQty1[4] || '-'}</td>
+  <td>${rowQty1[5] || '-'}</td>
+  <td>${rowNom1[2] ? formatCurrency(rowNom1[2]) : '-'}</td>
+  <td>${rowNom1[3] ? formatCurrency(rowNom1[3]) : '-'}</td>
+  <td>${rowNom1[4] ? formatCurrency(rowNom1[4]) : '-'}</td>
+  <td>${rowNom1[5] ? formatCurrency(rowNom1[5]) : '-'}</td>
+</tr>
+<tr>
+  <td class="label-cell">🔄 Transaksi vs Recon</td>
+  <td>${rowQty2[2] || '-'}</td>
+  <td>${rowQty2[3] || '-'}</td>
+  <td>${rowQty2[4] || '-'}</td>
+  <td>${rowQty2[5] || '-'}</td>
+  <td>${rowNom2[2] ? formatCurrency(rowNom2[2]) : '-'}</td>
+  <td>${rowNom2[3] ? formatCurrency(rowNom2[3]) : '-'}</td>
+  <td>${rowNom2[4] ? formatCurrency(rowNom2[4]) : '-'}</td>
+  <td>${rowNom2[5] ? formatCurrency(rowNom2[5]) : '-'}</td>
+</tr>
+`;
+
+// 2. MAPPING DETAIL TABEL DATA (Dimulai Tepat dari Baris index ke-12)
+for(let i=12; i<rows.length; i++){
 const row = rows[i];
 if(!row || row.every(cell => !cell)) continue;
 
+// Tabel Kiri: Kolom A sampai F (index 0 s.d 5)
 if(row[0] || row[1] || row[2]){
 hasilBody.innerHTML += `
 <tr>
@@ -567,22 +580,21 @@ hasilBody.innerHTML += `
 <td>${row[2] || ''}</td>
 <td>${row[3] || ''}</td>
 <td>${row[4] || ''}</td>
-<td>${row[5] || ''}</td>
-<td>${row[6] ? formatCurrency(row[6]) : ''}</td>
+<td>${row[5] ? formatCurrency(row[5]) : ''}</td>
 </tr>
 `;
 }
 
-if(row[8] || row[9] || row[10]){
+// Tabel Kanan: Kolom H sampai M (index 7 s.d 12)
+if(row[7] || row[8] || row[9]){
 hasilKananBody.innerHTML += `
 <tr>
+<td>${row[7] || ''}</td>
 <td>${row[8] || ''}</td>
 <td>${row[9] || ''}</td>
 <td>${row[10] || ''}</td>
 <td>${row[11] || ''}</td>
-<td>${row[12] || ''}</td>
-<td>${row[13] || ''}</td>
-<td>${row[14] ? formatCurrency(row[14]) : ''}</td>
+<td>${row[12] ? formatCurrency(row[12]) : ''}</td>
 </tr>
 `;
 }
@@ -604,34 +616,30 @@ document.getElementById("loading").innerText = "Gagal mengambil data Google Shee
 async function copyImage(){
 const area = document.getElementById("reportArea");
 
-// Trik agar hasil render konstan beresolusi tinggi tanpa peduli layar monitor pengguna:
-// Simpan style lama pelindung responsivitas
 const originalWidth = area.style.width;
 const originalMinWidth = area.style.minWidth;
 
-// Paksa render element pada layout lebar canvas standar professional laporan (1420px)
+// Penguncian resolusi canvas HD
 area.style.width = "1420px";
 area.style.minWidth = "1420px";
 
-// Berikan jeda mikrosekon agar html2canvas menangkap perubahan dimensi mutlak ini
 await new Promise(resolve => setTimeout(resolve, 150));
 
 const canvas = await html2canvas(area,{
-scale:2, // Melipatgandakan 1420px * 2 = Resolusi lebar gambar akhir adalah 2840px (Sangat Jernih)
+scale:2,
 useCORS:true,
 logging:false
 });
 
-// Kembalikan layout web view Anda ke ukuran 1366px semula agar tidak rusak setelah diklik
 area.style.width = originalWidth;
 area.style.minWidth = originalMinWidth;
 
 canvas.toBlob(async(blob)=>{
 try{
 await navigator.clipboard.write([new ClipboardItem({"image/png":blob})]);
-alert("✅ Gambar laporan HD (2840px) berhasil disalin ke clipboard!");
+alert("✅ Gambar laporan HD berhasil dikopi ke clipboard!");
 }catch{
-alert("❌ Gagal menyalin gambar secara otomatis.");
+alert("❌ Gagal menyalin gambar otomatis.");
 }
 },"image/png");
 }
