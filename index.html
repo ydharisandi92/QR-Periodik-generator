@@ -30,8 +30,21 @@ border-radius:20px;
 box-shadow:0 10px 30px rgba(0,0,0,.08);
 margin-bottom:25px;
 display:flex;
-gap:15px;
+gap:20px;
 flex-wrap:wrap;
+align-items:center;
+}
+
+.toolbar-group{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.toolbar-label{
+font-size:20px;
+font-weight:bold;
+color:#1f2937;
 }
 
 select,button{
@@ -44,6 +57,7 @@ font-size:20px;
 select{
 background:#f4f8ff;
 border:1px solid #dbe7ff;
+color:#1f2937;
 }
 
 button{
@@ -171,13 +185,23 @@ clear:both !important;
 }
 
 .subtitle{
-margin-top:14px;
+margin-top:4px;
+font-size:20px;
+font-weight:bold;
+text-align:center;
+width:100%;
+display:block; /* Mengubah menjadi block penuh agar benar-benar terpisah baris */
+clear:both;
+}
+
+.subtitle-pic {
+margin-top:8px; /* Memberikan jeda spasial agar tidak menempel satu sama lain */
 font-size:18px;
 font-weight:bold;
-display:flex;
-justify-content:center;
-gap:10px;
-flex-wrap:wrap;
+text-align:center;
+width:100%;
+display:block;
+clear:both;
 }
 
 /* ================= CONTENT AREA ================= */
@@ -217,7 +241,7 @@ border:1px solid #cfcfcf;
 table.main-data-table td{
 padding:10px 8px;
 border:1px solid #cfcfcf;
-font-size:11px; /* Diubah dari 18px ke 11px agar sama ukurannya dengan resume */
+font-size:11px;
 color:#111827;
 font-weight:600;
 text-align:center;
@@ -296,7 +320,7 @@ font-weight:900 !important;
 padding:10px 8px !important;
 line-height:1.2 !important;
 border:1px solid #cfcfcf !important;
-text-align:center !important; /* MENGUBAH DATA MENJADI RATA TENGAH (CENTER) */
+text-align:center !important;
 background:#fff !important;
 color:#111827 !important;
 }
@@ -307,7 +331,7 @@ font-weight:800 !important;
 letter-spacing:.2px !important;
 background:#f3f4f6 !important;
 color:#111827 !important;
-text-align:left !important; /* TETAP DI KIRI UNTUK LABEL STATUS */
+text-align:left !important;
 padding-left:10px !important;
 vertical-align:middle !important;
 white-space:nowrap !important;
@@ -326,11 +350,24 @@ grid-template-columns:1fr;
 <div class="wrapper">
 
 <div class="toolbar">
+<div class="toolbar-group">
+<span class="toolbar-label">Periode:</span>
 <select id="periode">
 <option value="1">Batch 1 (23:30:00 - 09:59:59)</option>
 <option value="2">Batch 2 (10:00:00 - 13:59:59)</option>
 <option value="3" selected>Batch 3 (14:00:00 - 16:59:59)</option>
 </select>
+</div>
+
+<div class="toolbar-group">
+<span class="toolbar-label">PIC:</span>
+<select id="pic">
+<option value="PUTRA">PUTRA</option>
+<option value="FERDIE">FERDIE</option>
+<option value="WILDAN">WILDAN</option>
+<option value="YUDHA GEDE">YUDHA GEDE</option>
+</select>
+</div>
 
 <button class="generate" onclick="generateReport()">Generate Report</button>
 <button class="copy" onclick="copyImage()">Copy Image</button>
@@ -364,6 +401,9 @@ RANGER+
 <span id="tanggalText">Tanggal : -</span>
 |
 <span id="periodeText">BATCH 3 | 14:00:00 - 16:59:59</span>
+</div>
+<div class="subtitle-pic">
+<span id="picText">REPORT BY : -</span>
 </div>
 </div>
 
@@ -458,7 +498,10 @@ async function generateReport(){
 try{
 document.getElementById("loading").innerText = "Mengambil data realtime dari Google Sheet...";
 const periode = document.getElementById("periode").value;
+const picValue = document.getElementById("pic").value;
+
 document.getElementById("periodeText").innerText = "BATCH " + periode + " | " + periodeLabel(periode);
+document.getElementById("picText").innerText = "REPORT BY : " + picValue;
 document.getElementById("tanggalText").innerText = "Tanggal : " + new Date().toLocaleDateString("id-ID",{
 day:'2-digit',
 month:'long',
