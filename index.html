@@ -96,7 +96,7 @@ clear:both !important;
 .header-table {
 width:100% !important;
 border-collapse:collapse !important;
-margin-bottom:5px !important;
+margin-bottom:1px !important;
 background:transparent !important;
 }
 
@@ -158,7 +158,7 @@ width:50% !important;
 .ranger {
 display:inline-block !important;
 text-align:right !important;
-font-size:24px !important;
+font-size:29px !important;
 font-style:italic !important;
 font-weight:900 !important;
 line-height:1 !important;
@@ -177,7 +177,7 @@ font-style:normal !important;
 
 .header h1.main-title {
 margin:12px 0 0 0 !important;
-font-size:28px !important;
+font-size:35px !important;
 font-weight:800 !important;
 text-align:center !important;
 color:#ffffff !important;
@@ -194,11 +194,12 @@ text-align:center;
 width:100%;
 display:block;
 clear:both;
+text-transform: uppercase;
 }
 
 .subtitle-pic {
-margin-top:4px;
-font-size:14px;
+margin-top:7px;
+font-size:15px;
 font-weight:bold;
 text-align:center;
 width:100%;
@@ -223,7 +224,7 @@ margin-bottom: 20px;
 
 .unified-summary-header {
 background: linear-gradient(90deg, #0d47a1 0%, #1565c0 50%, #ef6c00 100%);
-font-size: 16px;
+font-size: 15px;
 padding:10px;
 font-weight:800;
 text-align:center;
@@ -239,9 +240,9 @@ table-layout:fixed !important;
 }
 
 .matrix-table th{
-font-size:11px !important;               
+font-size:13px !important;               
 font-weight:800 !important;
-padding:8px 4px !important;
+padding:6px 4px !important;
 line-height:1.2 !important;
 border:1px solid #cfcfcf !important;
 background:#f1f5f9 !important;
@@ -257,9 +258,9 @@ background: #fef3c7 !important;
 }
 
 .matrix-table td{
-font-size:11px !important;               
-font-weight:800 !important;
-padding:8px 6px !important;
+font-size:14px !important;               
+font-weight:600 !important;
+padding:3px 5px !important;
 border:1px solid #cfcfcf !important;
 text-align:center !important;
 background:#fff !important;
@@ -290,9 +291,9 @@ align-items: start;
 }
 
 .section-title{
-font-size:11px;
+font-size:16px;
 font-weight:bold;
-margin-bottom:8px;
+margin-bottom: 4px;
 color:#1565c0;
 letter-spacing:.2px;
 min-height: 32px;
@@ -306,7 +307,7 @@ width:100%;
 border-collapse:collapse;
 margin-bottom:15px;
 overflow:hidden;
-border-radius:8px;
+border-radius:10px;
 border:1px solid #cfcfcf;
 }
 
@@ -314,7 +315,7 @@ table.main-data-table th{
 background:#1565c0;
 color:#fff;
 padding:8px 2px;
-font-size:9px;
+font-size:11px;
 text-align:center;
 vertical-align:middle;
 text-transform: uppercase;
@@ -330,11 +331,11 @@ color: #ff8f00 !important;
 }
 
 table.main-data-table td{
-padding:6px 2px;
+padding:5px 2px;
 border:1px solid #cfcfcf;
-font-size:10px;
+font-size:12px;
 color:#111827;
-font-weight:600;
+font-weight:500;
 text-align:center;
 }
 
@@ -433,7 +434,7 @@ RANGER+
       </tr>
     </thead>
     <tbody id="unifiedMatrixBody">
-      </tbody>
+    </tbody>
   </table>
 </div>
 
@@ -482,7 +483,15 @@ RANGER+
 </div>
 
 <script>
+// URL Integrasi Google Sheet Resmi
 const CSV_URL = "https://docs.google.com/spreadsheets/d/1ESHhGJY32qC7fSFLx8HoDwGdYu2XA94mCPFEkTQCp0w/export?format=csv&gid=0";
+
+const statusLabels = [
+  { label: "📊 TOTAL", idx: 2 }, 
+  { label: "✅ OK", idx: 3 },    
+  { label: "↩️ REFUND", idx: 4 },
+  { label: "❌ NOT OK", idx: 5 } 
+];
 
 // Format mata uang tanpa menggunakan pecahan desimal ,00
 function formatCurrency(value){
@@ -502,6 +511,24 @@ if(val === "2") return "10:00:00 - 13:59:59";
 return "14:00:00 - 16:59:59";
 }
 
+// Inisialisasi awal agar Label Kiri (Status) selalu permanen muncul semenjak awal dimuat
+function renderInitialMatrix() {
+  const unifiedMatrixBody = document.getElementById("unifiedMatrixBody");
+  unifiedMatrixBody.innerHTML = "";
+  statusLabels.forEach(item => {
+    unifiedMatrixBody.innerHTML += `
+    <tr id="row-status-${item.idx}">
+      <td class="label-cell">${item.label}</td>
+      <td class="qty-1">-</td>
+      <td class="qty-2">-</td>
+      <td class="nom-1">-</td>
+      <td class="nom-2">-</td>
+    </tr>
+    `;
+  });
+}
+
+// FUNGSI UTAMA LIVE: Mengambil data aktual secara otomatis dari Google Sheet
 async function generateReport(){
 try{
 document.getElementById("loading").innerText = "Mengambil data realtime dari Google Sheet...";
@@ -516,7 +543,13 @@ month:'long',
 year:'numeric'
 });
 
+document.getElementById("hasilBody").innerHTML = "";
+document.getElementById("hasilKananBody").innerHTML = "";
+renderInitialMatrix();
+
 const response = await fetch(CSV_URL);
+if (!response.ok) throw new Error("Gagal melakukan fetch data");
+
 const csvText = await response.text();
 
 Papa.parse(csvText,{
@@ -524,45 +557,28 @@ header:false,
 skipEmptyLines:false,
 complete:function(result){
 const rows = result.data;
-const unifiedMatrixBody = document.getElementById("unifiedMatrixBody");
 const hasilBody = document.getElementById("hasilBody");
 const hasilKananBody = document.getElementById("hasilKananBody");
 
-unifiedMatrixBody.innerHTML = "";
-hasilBody.innerHTML = "";
-hasilKananBody.innerHTML = "";
-
-// Mengambil baris data GSheet asli untuk pemetaan vertikal (Kolom C, D, E, F)
-const rQty1 = rows[2] || []; // Data Recon dibanding Data Transaksi (Volume)
-const rQty2 = rows[3] || []; // Data Transaksi dibanding Data Recon (Volume)
-const rNom1 = rows[7] || []; // Data Recon dibanding Data Transaksi (Nominal)
-const rNom2 = rows[8] || []; // Data Transaksi dibanding Data Recon (Nominal)
-
-const statusLabels = [
-  { label: "📊 TOTAL", idx: 2 }, // Kolom C (Total)
-  { label: "✅ OK", idx: 3 },    // Kolom D (OK)
-  { label: "↩️ REFUND", idx: 4 },// Kolom E (Refund)
-  { label: "❌ NOT OK", idx: 5 } // Kolom F (NOT OK)
-];
+const rQty1 = rows[2] || []; 
+const rQty2 = rows[3] || []; 
+const rNom1 = rows[7] || []; 
+const rNom2 = rows[8] || []; 
 
 statusLabels.forEach(item => {
-  unifiedMatrixBody.innerHTML += `
-  <tr>
-    <td class="label-cell">${item.label}</td>
-    <td>${rQty1[item.idx] || '-'}</td>
-    <td>${rQty2[item.idx] || '-'}</td>
-    <td>${rNom1[item.idx] ? formatCurrency(rNom1[item.idx]) : '-'}</td>
-    <td>${rNom2[item.idx] ? formatCurrency(rNom2[item.idx]) : '-'}</td>
-  </tr>
-  `;
+  const rowEl = document.getElementById(`row-status-${item.idx}`);
+  if (rowEl) {
+    rowEl.querySelector('.qty-1').innerText = rQty1[item.idx] || '-';
+    rowEl.querySelector('.qty-2').innerText = rQty2[item.idx] || '-';
+    rowEl.querySelector('.nom-1').innerText = rNom1[item.idx] ? formatCurrency(rNom1[item.idx]) : '-';
+    rowEl.querySelector('.nom-2').innerText = rNom2[item.idx] ? formatCurrency(rNom2[item.idx]) : '-';
+  }
 });
 
-// Mapping data baris tabel bawah (Dimulai baris ke-13)
 for(let i=12; i<rows.length; i++){
 const row = rows[i];
 if(!row || row.every(cell => !cell)) continue;
 
-// Tabel Kiri (Kolom A s.d F)
 if(row[0] || row[1] || row[2]){
 hasilBody.innerHTML += `
 <tr>
@@ -576,7 +592,6 @@ hasilBody.innerHTML += `
 `;
 }
 
-// Tabel Kanan (Kolom H s.d M)
 if(row[7] || row[8] || row[9]){
 hasilKananBody.innerHTML += `
 <tr>
@@ -593,27 +608,23 @@ hasilKananBody.innerHTML += `
 
 document.getElementById("loading").innerText = "Data berhasil digenerate";
 setTimeout(()=>{
-alert("✅ Generate Report Berhasil");
 document.getElementById("loading").innerText = "";
-},400);
+},600);
 }
 });
 }catch(error){
 console.error(error);
-document.getElementById("loading").innerText = "Gagal mengambil data Google Sheet";
+document.getElementById("loading").innerText = "Gagal mengambil data Google Sheet. Pastikan opsi 'Anyone with the link' sudah aktif.";
 }
 }
 
 async function copyImage(){
 const area = document.getElementById("reportArea");
-
 const originalWidth = area.style.width;
 const originalMinWidth = area.style.minWidth;
 
-// Memastikan render canvas dalam resolusi HD yang pas
 area.style.width = "1420px";
 area.style.minWidth = "1420px";
-
 await new Promise(resolve => setTimeout(resolve, 150));
 
 const canvas = await html2canvas(area,{
@@ -635,6 +646,8 @@ alert("❌ Gagal menyalin gambar otomatis.");
 },"image/png");
 }
 
+// Jalankan otomatis saat web dimuat pertama kali
+renderInitialMatrix();
 generateReport();
 </script>
 
