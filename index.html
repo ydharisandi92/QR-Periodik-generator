@@ -373,12 +373,12 @@ RANGER+
 
 <h1 class="main-title">PENGECEKAN QRIS H+0</h1>
 <div class="subtitle">
-<span id="tanggalText">Tanggal : 09 Juli 2026</span>
+<span id="tanggalText">Tanggal : -</span>
 |
-<span id="periodeText">BATCH 3 | 14:00:00 - 16:59:59</span>
+<span id="periodeText">BATCH - | -</span>
 </div>
 <div class="subtitle-pic">
-<span id="picText">REPORT BY : PUTRA</span>
+<span id="picText">REPORT BY : -</span>
 </div>
 </div>
 
@@ -401,35 +401,7 @@ RANGER+
       </tr>
     </thead>
     <tbody id="unifiedMatrixBody">
-      <tr>
-        <td class="label-cell">📊 TOTAL</td>
-        <td>4</td>
-        <td>4</td>
-        <td>Rp 3.175.500</td>
-        <td>Rp 3.175.500</td>
-      </tr>
-      <tr>
-        <td class="label-cell">✅ OK</td>
-        <td>2</td>
-        <td>2</td>
-        <td>Rp 600.000</td>
-        <td>Rp 600.000</td>
-      </tr>
-      <tr>
-        <td class="label-cell">↩️ REFUND</td>
-        <td>0</td>
-        <td>0</td>
-        <td>Rp 0</td>
-        <td>Rp 0</td>
-      </tr>
-      <tr>
-        <td class="label-cell">❌ NOT OK</td>
-        <td>2</td>
-        <td>2</td>
-        <td>Rp 2.575.500</td>
-        <td>Rp 2.575.500</td>
-      </tr>
-    </tbody>
+      </tbody>
   </table>
 </div>
 
@@ -449,39 +421,7 @@ RANGER+
     </tr>
     </thead>
     <tbody id="hasilBody">
-      <tr>
-        <td>1</td>
-        <td>2026-07-09 14:15:22</td>
-        <td>TRX992013841</td>
-        <td>REF-00192A</td>
-        <td style="background-color: #d1fae5; color: #065f46; font-weight: bold;">00</td>
-        <td>Rp&nbsp;150.000</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>2026-07-09 14:30:05</td>
-        <td>TRX992014512</td>
-        <td>REF-00193B</td>
-        <td style="background-color: #fee2e2; color: #991b1b; font-weight: bold;">68</td>
-        <td>Rp&nbsp;75.500</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>2026-07-09 15:02:11</td>
-        <td>TRX992015990</td>
-        <td>REF-00194C</td>
-        <td>05</td>
-        <td>Rp&nbsp;2.500.000</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>2026-07-09 16:45:59</td>
-        <td>TRX992017112</td>
-        <td>REF-00195D</td>
-        <td style="background-color: #d1fae5; color: #065f46; font-weight: bold;">00</td>
-        <td>Rp&nbsp;450.000</td>
-      </tr>
-    </tbody>
+      </tbody>
     </table>
   </div>
 
@@ -500,43 +440,7 @@ RANGER+
     </tr>
     </thead>
     <tbody id="hasilKananBody">
-      <tr>
-        <td>1</td>
-        <td>2026-07-09 14:15:22</td>
-        <td>TRX992013841</td>
-        <td>REF-00192A</td>
-        <td style="background-color: #d1fae5; color: #065f46; font-weight: bold;">00</td>
-        <td>Rp&nbsp;150.000</td>
-        <td style="font-weight: bold; color: #111827;">Sukses manual</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>2026-07-09 14:30:05</td>
-        <td>TRX992014512</td>
-        <td>REF-00193B</td>
-        <td style="background-color: #fee2e2; color: #991b1b; font-weight: bold;">68</td>
-        <td>Rp&nbsp;75.500</td>
-        <td style="font-weight: bold; color: #111827;"></td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>2026-07-09 15:10:00</td>
-        <td>TRX992016223</td>
-        <td>REF-00198E</td>
-        <td>91</td>
-        <td>Rp&nbsp;12.500</td>
-        <td style="font-weight: bold; color: #111827;"></td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td>2026-07-09 16:45:59</td>
-        <td>0</td>
-        <td>REF-00195D</td>
-        <td style="background-color: #d1fae5; color: #065f46; font-weight: bold;">00</td>
-        <td>Rp&nbsp;450.000</td>
-        <td style="font-weight: bold; color: #111827;">Sukses manual</td>
-      </tr>
-    </tbody>
+      </tbody>
     </table>
   </div>
 
@@ -739,10 +643,8 @@ alert("❌ Gagal menyalin gambar otomatis.");
 },"image/png");
 }
 
-// Catatan: Jika ingin langsung menarik data asli dari GSheet saat file dibuka,
-// hapus tanda komentar (uncomment) pada dua fungsi di bawah ini.
-// renderInitialMatrix();
-// generateReport();
+// Inisialisasi awal saat halaman dibuka kosong
+renderInitialMatrix();
 </script>
 
 </body>
