@@ -462,12 +462,13 @@ RANGER+
     <table class="main-data-table right-theme">
     <thead>
     <tr>
-      <th style="width: 8%;">No</th>
-      <th style="width: 26%;">Waktu Transaksi</th>
-      <th style="width: 18%;">ID Transaksi</th>
-      <th style="width: 24%;">ID Trx Reff</th>
-      <th style="width: 8%;">RC</th>
-      <th style="width: 16%;">Nominal</th>
+      <th style="width: 6%;">No</th>
+      <th style="width: 22%;">Waktu Transaksi</th>
+      <th style="width: 16%;">ID Transaksi</th>
+      <th style="width: 20%;">ID Trx Reff</th>
+      <th style="width: 6%;">RC</th>
+      <th style="width: 14%;">Nominal</th>
+      <th style="width: 16%;">keterangan</th>
     </tr>
     </thead>
     <tbody id="hasilKananBody"></tbody>
@@ -593,6 +594,15 @@ hasilBody.innerHTML += `
 }
 
 if(row[7] || row[8] || row[9]){
+let keteranganTxt = "";
+let trxReffKiri = String(row[3] || '').trim();
+let trxReffKanan = String(row[10] || '').trim();
+let idTrxKiri = String(row[2] || '').trim();
+
+if(trxReffKiri !== "" && trxReffKiri === trxReffKanan && idTrxKiri === "0"){
+  keteranganTxt = "Sukses manual";
+}
+
 hasilKananBody.innerHTML += `
 <tr>
 <td>${row[7] || ''}</td>
@@ -601,6 +611,7 @@ hasilKananBody.innerHTML += `
 <td>${row[10] || ''}</td>
 <td>${row[11] || ''}</td>
 <td>${row[12] ? formatCurrency(row[12]) : ''}</td>
+<td style="font-weight: bold; color: #111827;">${keteranganTxt}</td>
 </tr>
 `;
 }
