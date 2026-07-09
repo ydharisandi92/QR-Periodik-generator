@@ -20,7 +20,7 @@ color:#1f2937;
 
 .wrapper{
 width: 100%;
-max-width: 1320px; /* Optimal untuk resolusi laptop 1366x768 */
+max-width: 1550px; 
 margin:auto;
 }
 
@@ -112,42 +112,11 @@ text-align:left !important;
 width:50% !important;
 }
 
-.qris-logo-container {
-display:inline-block !important;
-text-align:left !important;
-vertical-align:middle !important;
-}
-
-.qris-main-text {
-font-family:"Arial Black", Arial, Helvetica, sans-serif !important;
-font-size:38px !important; 
-font-weight:900 !important;
-letter-spacing:-2px !important; 
-color:#ffffff !important; 
-margin:0 !important;
-padding:0 !important;
-line-height:0.8 !important;
-display:inline-block !important;
-vertical-align:middle !important;
-}
-
-.qris-sub-text-side {
-display:inline-block !important;
-border-left:2px solid #ffffff !important; 
-padding-left:8px !important;
-margin-left:8px !important;
-text-align:left !important;
-vertical-align:middle !important;
-}
-
-.qris-sub-line1, .qris-sub-line2 {
-font-size:12px !important;
-font-weight:bold !important;
-font-style:italic !important;
-color:#ffffff !important;
-letter-spacing:0.5px !important;
-line-height:1.2 !important;
-margin:0 !important;
+.qris-logo-img {
+height: 55px !important; 
+display: inline-block !important;
+vertical-align: middle !important;
+object-fit: contain !important;
 }
 
 .logo-right-cell {
@@ -232,7 +201,7 @@ color:#fff;
 letter-spacing:.4px;
 }
 
-/* Matrix Table Layout */
+/* Matrix Table Layout - FONT DISESUAIKAN AGAR SAMA DENGAN TABEL UTAMA */
 .matrix-table{
 width:100% !important;
 border-collapse:collapse !important;
@@ -240,9 +209,9 @@ table-layout:fixed !important;
 }
 
 .matrix-table th{
-font-size:13px !important;               
+font-size:11.5px !important; /* Disamakan dengan font-size th tabel utama */             
 font-weight:800 !important;
-padding:6px 4px !important;
+padding:10px 4px !important;
 line-height:1.2 !important;
 border:1px solid #cfcfcf !important;
 background:#f1f5f9 !important;
@@ -258,13 +227,14 @@ background: #fef3c7 !important;
 }
 
 .matrix-table td{
-font-size:14px !important;               
-font-weight:600 !important;
-padding:3px 5px !important;
+font-size:12px !important; /* Disamakan dengan font-size td tabel utama */              
+font-weight:600 !important; /* Ketebalan proporsional agar data angka terlihat tegas */
+padding:8px 5px !important;
 border:1px solid #cfcfcf !important;
 text-align:center !important;
 background:#fff !important;
 color:#111827 !important;
+white-space: nowrap !important;
 }
 
 .matrix-table tbody tr:nth-child(even) td:not(.label-cell){
@@ -272,7 +242,7 @@ background:#f8fafc !important;
 }
 
 .label-cell{
-font-size:11px !important;               
+font-size:11.5px !important;               
 font-weight:800 !important;
 background:#f3f4f6 !important;
 color:#111827 !important;
@@ -285,18 +255,18 @@ white-space:nowrap !important;
 .main-tables-grid {
 display: grid;
 grid-template-columns: 1fr 1fr;
-gap: 15px;
+gap: 20px;
 margin-bottom: 5px;
 align-items: start;
 }
 
 .section-title{
-font-size:16px;
+font-size:14px;
 font-weight:bold;
-margin-bottom: 4px;
+margin-bottom: 6px;
 color:#1565c0;
 letter-spacing:.2px;
-min-height: 32px;
+min-height: 35px;
 display: flex;
 align-items: center;
 text-transform: uppercase;
@@ -306,6 +276,7 @@ table.main-data-table{
 width:100%;
 border-collapse:collapse;
 margin-bottom:15px;
+table-layout: fixed; 
 overflow:hidden;
 border-radius:10px;
 border:1px solid #cfcfcf;
@@ -314,13 +285,14 @@ border:1px solid #cfcfcf;
 table.main-data-table th{
 background:#1565c0;
 color:#fff;
-padding:8px 2px;
-font-size:11px;
+padding:10px 2px;
+font-size:11.5px;
 text-align:center;
 vertical-align:middle;
 text-transform: uppercase;
 font-weight:800;
 border:1px solid #cfcfcf;
+white-space: nowrap !important; 
 }
 
 table.main-data-table.right-theme th {
@@ -331,12 +303,13 @@ color: #ff8f00 !important;
 }
 
 table.main-data-table td{
-padding:5px 2px;
+padding:8px 4px;
 border:1px solid #cfcfcf;
 font-size:12px;
 color:#111827;
-font-weight:500;
+font-weight:600;
 text-align:center;
+white-space: nowrap !important; 
 }
 
 table.main-data-table tbody tr:nth-child(even){
@@ -387,13 +360,7 @@ font-size:13px;
 <table class="header-table">
 <tr>
 <td class="logo-left-cell">
-<div class="qris-logo-container">
-<h1 class="qris-main-text">QRIS</h1>
-<div class="qris-sub-text-side">
-<div class="qris-sub-line1">QR Code Standard</div>
-<div class="qris-sub-line2">Pembayaran Nasional</div>
-</div>
-</div>
+<img src="iconQris.png" alt="Logo QRIS" class="qris-logo-img">
 </td>
 <td class="logo-right-cell">
 <div class="ranger">
@@ -445,12 +412,12 @@ RANGER+
     <table class="main-data-table">
     <thead>
     <tr>
-      <th style="width: 8%;">No</th>
-      <th style="width: 26%;">Waktu Transaksi</th>
-      <th style="width: 18%;">ID Transaksi</th>
-      <th style="width: 24%;">ID Trx Reff</th>
+      <th style="width: 6%;">No</th>
+      <th style="width: 27%;">Waktu Transaksi</th>
+      <th style="width: 22%;">ID Transaksi</th>
+      <th style="width: 22%;">ID Trx Reff</th>
       <th style="width: 8%;">RC</th>
-      <th style="width: 16%;">Nominal</th>
+      <th style="width: 15%;">Nominal</th>
     </tr>
     </thead>
     <tbody id="hasilBody"></tbody>
@@ -462,13 +429,13 @@ RANGER+
     <table class="main-data-table right-theme">
     <thead>
     <tr>
-      <th style="width: 6%;">No</th>
-      <th style="width: 22%;">Waktu Transaksi</th>
-      <th style="width: 16%;">ID Transaksi</th>
-      <th style="width: 20%;">ID Trx Reff</th>
-      <th style="width: 6%;">RC</th>
-      <th style="width: 14%;">Nominal</th>
-      <th style="width: 16%;">keterangan</th>
+      <th style="width: 5%;">No</th>
+      <th style="width: 24%;">Waktu Transaksi</th>
+      <th style="width: 18%;">ID Transaksi</th>
+      <th style="width: 18%;">ID Trx Reff</th>
+      <th style="width: 7%;">RC</th>
+      <th style="width: 13%;">Nominal</th>
+      <th style="width: 15%;">Keterangan</th>
     </tr>
     </thead>
     <tbody id="hasilKananBody"></tbody>
@@ -484,7 +451,6 @@ RANGER+
 </div>
 
 <script>
-// URL Integrasi Google Sheet Resmi
 const CSV_URL = "https://docs.google.com/spreadsheets/d/1ESHhGJY32qC7fSFLx8HoDwGdYu2XA94mCPFEkTQCp0w/export?format=csv&gid=0";
 
 const statusLabels = [
@@ -494,7 +460,6 @@ const statusLabels = [
   { label: "❌ NOT OK", idx: 5 } 
 ];
 
-// Format mata uang tanpa menggunakan pecahan desimal ,00
 function formatCurrency(value){
 let num = parseFloat(String(value || 0).replace(/[^0-9.-]/g,''));
 if(isNaN(num)) num = 0;
@@ -512,7 +477,6 @@ if(val === "2") return "10:00:00 - 13:59:59";
 return "14:00:00 - 16:59:59";
 }
 
-// Inisialisasi awal agar Label Kiri (Status) selalu permanen muncul semenjak awal dimuat
 function renderInitialMatrix() {
   const unifiedMatrixBody = document.getElementById("unifiedMatrixBody");
   unifiedMatrixBody.innerHTML = "";
@@ -529,7 +493,6 @@ function renderInitialMatrix() {
   });
 }
 
-// FUNGSI UTAMA LIVE: Mengambil data aktual secara otomatis dari Google Sheet
 async function generateReport(){
 try{
 document.getElementById("loading").innerText = "Mengambil data realtime dari Google Sheet...";
@@ -634,9 +597,9 @@ const area = document.getElementById("reportArea");
 const originalWidth = area.style.width;
 const originalMinWidth = area.style.minWidth;
 
-area.style.width = "1420px";
-area.style.minWidth = "1420px";
-await new Promise(resolve => setTimeout(resolve, 150));
+area.style.width = "1650px";
+area.style.minWidth = "1650px";
+await new Promise(resolve => setTimeout(resolve, 200));
 
 const canvas = await html2canvas(area,{
 scale:2,
@@ -650,14 +613,13 @@ area.style.minWidth = originalMinWidth;
 canvas.toBlob(async(blob)=>{
 try{
 await navigator.clipboard.write([new ClipboardItem({"image/png":blob})]);
-alert("✅ Gambar laporan HD berhasil dikopi ke clipboard!");
+alert("✅ Gambar laporan format HD-Panjang berhasil disimpan ke clipboard!");
 }catch{
 alert("❌ Gagal menyalin gambar otomatis.");
 }
 },"image/png");
 }
 
-// Jalankan otomatis saat web dimuat pertama kali
 renderInitialMatrix();
 generateReport();
 </script>
