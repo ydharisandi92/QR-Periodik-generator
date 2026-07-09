@@ -193,7 +193,7 @@ margin-bottom: 20px;
 
 .unified-summary-header {
 background: linear-gradient(90deg, #0d47a1 0%, #1565c0 50%, #ef6c00 100%);
-font-size: 15px;
+font-size: 17px;
 padding:10px;
 font-weight:800;
 text-align:center;
@@ -209,10 +209,10 @@ table-layout:fixed !important;
 }
 
 .matrix-table th{
-font-size:11.5px !important;             
+font-size:15px !important;             
 font-weight:800 !important;
-padding:10px 4px !important;
-line-height:1.2 !important;
+padding:7px 5px !important;
+line-height:1 !important;
 border:1px solid #cfcfcf !important;
 background:#f1f5f9 !important;
 color:#1e3a8a !important;
@@ -227,9 +227,9 @@ background: #fef3c7 !important;
 }
 
 .matrix-table td{
-font-size:12px !important;              
-font-weight:600 !important; 
-padding:8px 5px !important;
+font-size:15px !important;              
+font-weight:900 !important; 
+padding:6px 5px !important;
 border:1px solid #cfcfcf !important;
 text-align:center !important;
 background:#fff !important;
@@ -242,7 +242,7 @@ background:#f8fafc !important;
 }
 
 .label-cell{
-font-size:11.5px !important;               
+font-size:10px !important;               
 font-weight:800 !important;
 background:#f3f4f6 !important;
 color:#111827 !important;
@@ -261,7 +261,7 @@ align-items: start;
 }
 
 .section-title{
-font-size:14px;
+font-size:20px;
 font-weight:bold;
 margin-bottom: 6px;
 color:#1565c0;
@@ -373,12 +373,12 @@ RANGER+
 
 <h1 class="main-title">PENGECEKAN QRIS H+0</h1>
 <div class="subtitle">
-<span id="tanggalText">Tanggal : -</span>
+<span id="tanggalText">Tanggal : 09 Juli 2026</span>
 |
 <span id="periodeText">BATCH 3 | 14:00:00 - 16:59:59</span>
 </div>
 <div class="subtitle-pic">
-<span id="picText">REPORT BY : -</span>
+<span id="picText">REPORT BY : PUTRA</span>
 </div>
 </div>
 
@@ -401,6 +401,34 @@ RANGER+
       </tr>
     </thead>
     <tbody id="unifiedMatrixBody">
+      <tr>
+        <td class="label-cell">📊 TOTAL</td>
+        <td>4</td>
+        <td>4</td>
+        <td>Rp 3.175.500</td>
+        <td>Rp 3.175.500</td>
+      </tr>
+      <tr>
+        <td class="label-cell">✅ OK</td>
+        <td>2</td>
+        <td>2</td>
+        <td>Rp 600.000</td>
+        <td>Rp 600.000</td>
+      </tr>
+      <tr>
+        <td class="label-cell">↩️ REFUND</td>
+        <td>0</td>
+        <td>0</td>
+        <td>Rp 0</td>
+        <td>Rp 0</td>
+      </tr>
+      <tr>
+        <td class="label-cell">❌ NOT OK</td>
+        <td>2</td>
+        <td>2</td>
+        <td>Rp 2.575.500</td>
+        <td>Rp 2.575.500</td>
+      </tr>
     </tbody>
   </table>
 </div>
@@ -420,7 +448,40 @@ RANGER+
       <th style="width: 15%;">Nominal</th>
     </tr>
     </thead>
-    <tbody id="hasilBody"></tbody>
+    <tbody id="hasilBody">
+      <tr>
+        <td>1</td>
+        <td>2026-07-09 14:15:22</td>
+        <td>TRX992013841</td>
+        <td>REF-00192A</td>
+        <td style="background-color: #d1fae5; color: #065f46; font-weight: bold;">00</td>
+        <td>Rp&nbsp;150.000</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>2026-07-09 14:30:05</td>
+        <td>TRX992014512</td>
+        <td>REF-00193B</td>
+        <td style="background-color: #fee2e2; color: #991b1b; font-weight: bold;">68</td>
+        <td>Rp&nbsp;75.500</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>2026-07-09 15:02:11</td>
+        <td>TRX992015990</td>
+        <td>REF-00194C</td>
+        <td>05</td>
+        <td>Rp&nbsp;2.500.000</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>2026-07-09 16:45:59</td>
+        <td>TRX992017112</td>
+        <td>REF-00195D</td>
+        <td style="background-color: #d1fae5; color: #065f46; font-weight: bold;">00</td>
+        <td>Rp&nbsp;450.000</td>
+      </tr>
+    </tbody>
     </table>
   </div>
 
@@ -438,7 +499,44 @@ RANGER+
       <th style="width: 15%;">Keterangan</th>
     </tr>
     </thead>
-    <tbody id="hasilKananBody"></tbody>
+    <tbody id="hasilKananBody">
+      <tr>
+        <td>1</td>
+        <td>2026-07-09 14:15:22</td>
+        <td>TRX992013841</td>
+        <td>REF-00192A</td>
+        <td style="background-color: #d1fae5; color: #065f46; font-weight: bold;">00</td>
+        <td>Rp&nbsp;150.000</td>
+        <td style="font-weight: bold; color: #111827;">Sukses manual</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>2026-07-09 14:30:05</td>
+        <td>TRX992014512</td>
+        <td>REF-00193B</td>
+        <td style="background-color: #fee2e2; color: #991b1b; font-weight: bold;">68</td>
+        <td>Rp&nbsp;75.500</td>
+        <td style="font-weight: bold; color: #111827;"></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>2026-07-09 15:10:00</td>
+        <td>TRX992016223</td>
+        <td>REF-00198E</td>
+        <td>91</td>
+        <td>Rp&nbsp;12.500</td>
+        <td style="font-weight: bold; color: #111827;"></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>2026-07-09 16:45:59</td>
+        <td>0</td>
+        <td>REF-00195D</td>
+        <td style="background-color: #d1fae5; color: #065f46; font-weight: bold;">00</td>
+        <td>Rp&nbsp;450.000</td>
+        <td style="font-weight: bold; color: #111827;">Sukses manual</td>
+      </tr>
+    </tbody>
     </table>
   </div>
 
@@ -493,7 +591,6 @@ function renderInitialMatrix() {
   });
 }
 
-// Fungsi bantu untuk memformat tampilan kolom RC secara otomatis
 function getRcStyleAndValue(val) {
   let cleanVal = String(val || '').trim();
   if (cleanVal === "0") {
@@ -642,8 +739,10 @@ alert("❌ Gagal menyalin gambar otomatis.");
 },"image/png");
 }
 
-renderInitialMatrix();
-generateReport();
+// Catatan: Jika ingin langsung menarik data asli dari GSheet saat file dibuka,
+// hapus tanda komentar (uncomment) pada dua fungsi di bawah ini.
+// renderInitialMatrix();
+// generateReport();
 </script>
 
 </body>
