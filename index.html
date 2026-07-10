@@ -20,7 +20,7 @@ color:#1f2937;
 
 .wrapper{
 width: 100%;
-max-width: 1650px; 
+max-width: 1650px; /* Diperlebar sedikit untuk ruang teks besar */
 margin:auto;
 }
 
@@ -87,7 +87,7 @@ width: 100%;
 /* ================= HEADER STYLE LAYOUT ================= */
 .header{
 background:linear-gradient(135deg, #002f87 0%, #1565c0 45%, #ff8f00 100%) !important;
-padding:25px 30px !important; 
+padding:25px 30px !important; /* Diperluas sedikit */
 color:#fff !important;
 display:block !important;
 clear:both !important;
@@ -113,7 +113,7 @@ width:50% !important;
 }
 
 .qris-logo-img {
-height: 60px !important; 
+height: 60px !important; /* Sedikit lebih besar */
 display: inline-block !important;
 vertical-align: middle !important;
 object-fit: contain !important;
@@ -124,17 +124,29 @@ text-align:right !important;
 width:50% !important;
 }
 
-/* Mengatur ukuran aset gambar logo baru agar presisi */
-.ranger-logo-img {
-    height: 55px !important; 
-    display: inline-block !important;
-    vertical-align: middle !important;
-    object-fit: contain !important;
+.ranger {
+display:inline-block !important;
+text-align:right !important;
+font-size:32px !important; /* Diperbesar */
+font-style:italic !important;
+font-weight:900 !important;
+line-height:1 !important;
+color:#ffffff !important;
+}
+
+.ranger small {
+display:block !important;
+margin-top:4px !important;
+font-size:10px !important;
+letter-spacing:0.5px !important;
+font-weight:700 !important;
+opacity:0.95 !important;
+font-style:normal !important;
 }
 
 .header h1.main-title {
 margin:5px 0 0 0 !important;
-font-size:54px !important; 
+font-size:54px !important; /* Diperbesar agar seimbang */
 font-weight:800 !important;
 text-align:center !important;
 color:#ffffff !important;
@@ -145,7 +157,7 @@ clear:both !important;
 
 .subtitle{
 margin-top:6px;
-font-size:22px; 
+font-size:22px; /* Diperbesar */
 font-weight:bold;
 text-align:center;
 width:100%;
@@ -156,7 +168,7 @@ text-transform: uppercase;
 
 .subtitle-pic {
 margin-top:8px;
-font-size:18px; 
+font-size:18px; /* Diperbesar */
 font-weight:bold;
 text-align:center;
 width:100%;
@@ -181,15 +193,15 @@ margin-bottom: 25px;
 
 .unified-summary-header {
 background: linear-gradient(90deg, #0d47a1 0%, #1565c0 50%, #ef6c00 100%);
-font-size: 19px; 
+font-size: 19px; /* Diperbesar */
 padding:12px;
 font-weight:800;
 text-align:center;
 color:#fff;
 letter-spacing:.4px;
-} 
+} fix
 
-/* Matrix Table Layout */
+/* Matrix Table Layout (Resume Data Utama) */
 .matrix-table{
 width:100% !important;
 border-collapse:collapse !important;
@@ -197,9 +209,9 @@ table-layout:fixed !important;
 }
 
 .matrix-table th{
-font-size:16px !important;          
+font-size:16px !important; /* Diperbesar dari 15px */         
 font-weight:800 !important;
-padding:10px 6px !important; 
+padding:10px 6px !important; /* Padding vertikal ditambah */
 line-height:1.2 !important;
 border:1px solid #cfcfcf !important;
 background:#f1f5f9 !important;
@@ -215,9 +227,9 @@ background: #fef3c7 !important;
 }
 
 .matrix-table td{
-font-size:17px !important;               
+font-size:17px !important; /* Diperbesar dari 15px agar angka nominal jelas */              
 font-weight:900 !important;
-padding:12px 6px !important; 
+padding:12px 6px !important; /* Padding vertikal ditambah */
 border:1px solid #cfcfcf !important;
 text-align:center !important;
 background:#fff !important;
@@ -230,7 +242,7 @@ background:#f8fafc !important;
 }
 
 .label-cell{
-font-size:14px !important;               
+font-size:14px !important; /* Diperbesar dari 10px agar teks icon terbaca */              
 font-weight:800 !important;
 background:#f3f4f6 !important;
 color:#111827 !important;
@@ -249,7 +261,7 @@ align-items: start;
 }
 
 .section-title{
-font-size:17px; 
+font-size:17px; /* Disesuaikan agar proporsional di atas tabel rincian */
 font-weight:bold;
 margin-bottom: 8px;
 color:#1565c0;
@@ -273,8 +285,8 @@ border:1px solid #cfcfcf;
 table.main-data-table th{
 background:#1565c0;
 color:#fff;
-padding:12px 4px; 
-font-size:13px; 
+padding:12px 4px; /* Padding ditambah */
+font-size:13px; /* Diperbesar dari 11.5px */
 text-align:center;
 vertical-align:middle;
 text-transform: uppercase;
@@ -291,11 +303,11 @@ color: #ff8f00 !important;
 }
 
 table.main-data-table td{
-padding:10px 4px; 
+padding:10px 4px; /* Padding ditambah */
 border:1px solid #cfcfcf;
-font-size:14px; 
+font-size:14px; /* Diperbesar dari 12px */
 color:#111827;
-font-weight:700; 
+font-weight:700; /* Dibuat lebih tebal */
 text-align:center;
 white-space: nowrap !important;
 }
@@ -351,7 +363,10 @@ font-size:14px;
 <img src="https://lh3.googleusercontent.com/d/1d078fb2Axllf248mIz3qCHf_cnxGODUH" alt="Logo QRIS" class="qris-logo-img">
 </td>
 <td class="logo-right-cell">
-    <img src="ranger+logo.png" alt="Logo Ranger+" class="ranger-logo-img">
+<div class="ranger">
+RANGER+
+<small>SENSE EARLY — MOVE FASTER — WIN AHEAD</small>
+</div>
 </td>
 </tr>
 </table>
@@ -605,12 +620,13 @@ const area = document.getElementById("reportArea");
 const originalWidth = area.style.width;
 const originalMinWidth = area.style.minWidth;
 
+// Memastikan area render lebar & stabil agar teks berukuran besar tidak meluap ke bawah
 area.style.width = "1650px";
 area.style.minWidth = "1650px";
 await new Promise(resolve => setTimeout(resolve, 250));
 
 const canvas = await html2canvas(area,{
-scale:2, 
+scale:2, // Kualitas HD tajam
 useCORS:true,
 logging:false
 });
@@ -628,6 +644,7 @@ alert("❌ Gagal menyalin gambar otomatis.");
 },"image/png");
 }
 
+// Inisialisasi awal saat halaman dibuka kosong
 renderInitialMatrix();
 </script>
 
